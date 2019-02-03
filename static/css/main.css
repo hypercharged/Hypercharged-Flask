@@ -1,0 +1,9 @@
+.content-container {
+	border-radius: 20px;
+	min-height: 400px;
+	margin: 50px auto !important;
+}
+.full-width {
+	width: 100%;
+	border-radius: 20px;
+}

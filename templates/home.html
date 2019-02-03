@@ -1,7 +1,12 @@
 {% extends "head.html" %}
 {% block content %}
 	<div class="home">
-	<h1>Hypercharged Website</h1>
-	<p>Welcome to the Hypercharged Website!</p>
+		{% for image in images %}
+			{% if image != "hctransparent.png"%}
+			<div class="container white content-container">
+				      <img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width"></img>
+			</div>
+			{% endif %}
+		{% endfor %}
 	</div>
 {% endblock %}
