@@ -1,7 +1,7 @@
 {% extends "head.html" %}
 {% block content %}
 	<div class="home">
-		 <table class="image-container">
+		 <table class="image-container hide-on-small-only">
 		{% for image in images %}
 			{% if image != "hctransparent.png"%}
 					{% if loop.index == 1 %}
@@ -14,5 +14,13 @@
 			{% endif %}
 		{% endfor %}
 	</table>
+	<table class="image-container show-on-small-only">
+		{% for image in images %}
+			<tr>
+				   	<td><img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width"></img></td>
+			</tr>
+		{% endfor %}
+	</table>
+
 	</div>
 {% endblock %}
