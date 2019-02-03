@@ -1,9 +1,27 @@
 .content-container {
 	border-radius: 20px;
-	min-height: 400px;
 	margin: 50px auto !important;
 }
 .full-width {
 	width: 100%;
 	border-radius: 20px;
+	object-fit: none !important;
+	height: 200px;
+	transition: transform 0.2s;
+}
+
+.image-container {
+	margin: 0 auto;
+	width: 80%;
+}
+.full-width:hover {
+	opacity: 0.8;
+}
+
+@media and screen(max-width: 650px) {
+	.full-width {
+	width: 100%;
+	max-height: 200px;
+	border-radius: 20px;
+	}
 }

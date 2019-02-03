@@ -1,12 +1,18 @@
 {% extends "head.html" %}
 {% block content %}
 	<div class="home">
+		 <table class="image-container">
 		{% for image in images %}
 			{% if image != "hctransparent.png"%}
-			<div class="container white content-container">
-				      <img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width"></img>
-			</div>
+					{% if loop.index-1 == 1 %}
+						<tr>
+					{% elif (loop.index-2) % 3 == 0 %}
+						</tr>
+				   		<tr>
+				   	{% endif %}
+				   	<td><img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width"></img></td>
 			{% endif %}
 		{% endfor %}
+	</table>
 	</div>
 {% endblock %}
