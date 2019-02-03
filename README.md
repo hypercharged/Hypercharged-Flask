@@ -3,3 +3,6 @@ Flask Website for Hypercharged. This will feature a gallery of previous work tha
 
 Site Mockup (Temporary):
 ![Download Page](https://i.ibb.co/Jd9bm9s/Hypercharged.png)
+
+Beta Version (As of 2/2/2019):
+![Download Page](https://ibb.co/s3Q9Kn9)
