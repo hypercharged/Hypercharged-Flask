@@ -9,7 +9,9 @@
 	height: 200px;
 	transition: transform 0.2s;
 }
-
+.modal-image {
+	width: 100%;
+}
 .image-container {
 	margin: 0 auto;
 	width: 80%;
@@ -17,7 +19,6 @@
 .full-width:hover {
 	opacity: 0.8;
 }
-
 @media and screen(max-width: 650px) {
 	.full-width {
 	width: 100%;

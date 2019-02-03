@@ -24,7 +24,9 @@
 	      {% endblock %}
 </body>
 {# Load JS last for optimized load time #}
+	 <script defer="defer" src="{{ url_for('static', filename='js/jquery-2.1.1.min.js') }}"></script>
 	 <script defer="defer" src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
+	 <script defer="defer" src="{{ url_for('static', filename='js/main.js') }}"></script>
 	  <script defer="defer" src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
 	  <script defer="defer" src="{{ url_for('static', filename='js/rellax.js') }}"></script>
 </html>

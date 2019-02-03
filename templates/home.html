@@ -10,11 +10,18 @@
 						</tr>
 				   		<tr>
 				   	{% endif %}
-				   	<td><img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width"></img></td>
+				   	<td><a  href="#modal{{loop.index-1}}" class="modal-trigger"><img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width"></img></a></td>
+					  <div class="modal" id="modal{{loop.index-1}}">
+					    <div class="modal-content">
+					      <h4>{{image}}</h4>
+					      <img src="{{ url_for('static', filename='assets/' + image) }}" class="modal-image"></img>
+					    </div>
+					    
+					  </div>
 			{% endif %}
 		{% endfor %}
 	</table>
-	<table class="image-container show-on-small-only">
+	<table class="image-container hide-on-med-and-up">
 		{% for image in images %}
 			<tr>
 				   	<td><img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width"></img></td>
