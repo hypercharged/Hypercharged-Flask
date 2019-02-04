@@ -19,7 +19,7 @@
 					    <div class="modal-footer black">
 					    	
 					    	{% if metadata[image]["event"] != "N/A" and metadata[image]["event"] != ""%}
-								<h5 class="white-text left"><a><i class="fab fa-instagram pink-text big-icon"></a></i>{{metadata[image]["car"]}} @ {{metadata[image]["event"]}}</h5>
+								<h5 class="white-text left"><a><i class="fab fa-instagram pink-text big-icon"></a></i>{{metadata[image]["car"]}}<br>{{metadata[image]["event"]}}</h5>
 					    	{% else %}
 								<h5 class="white-text left"><a><i class="fab fa-instagram pink-text big-icon"></a></i> {{metadata[image]["car"]}} In The Wild</h5>
 					    	{% endif %}
