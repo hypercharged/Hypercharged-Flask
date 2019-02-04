@@ -11,10 +11,14 @@
 				   		<tr>
 				   	{% endif %}
 				   	<td><a  href="#modal{{loop.index-1}}" class="modal-trigger"><img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width"></img></a></td>
-					  <div class="modal" id="modal{{loop.index-1}}">
+					  <div class="modal black big-round" id="modal{{loop.index-1}}">
 					    <div class="modal-content">
-					      <h4>{{image}}</h4>
-					      <img src="{{ url_for('static', filename='assets/' + image) }}" class="modal-image"></img>
+					      
+					      <img src="{{ url_for('static', filename='assets/' + image) }}" class="modal-image big-round"></img>
+					    </div>
+					    <div class="modal-footer black">
+					    	
+					    	<h5 class="white-text left">{{image}} <i class="fab fa-instagram white-text big-icon"></i></h5>
 					    </div>
 					    
 					  </div>
