@@ -2,7 +2,6 @@ from flask import Flask, render_template;
 import os, json; 
 from flask_sitemap import Sitemap;
 from flask import send_from_directory
-import pyrebase
 
 
 app = Flask(__name__)
@@ -37,7 +36,6 @@ def home():
 			metadata[image].append()
 		print(image)
 	return render_template('home.html', name="Home", description = settings["Home"]["description"], images=images, metadata=metadata)
-
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
