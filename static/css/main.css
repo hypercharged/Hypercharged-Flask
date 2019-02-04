@@ -12,15 +12,24 @@
 .modal {
 	max-height: 100% !important;
 	border: 5px solid white;
+	transform: translateY(-10%) !important;
+}
+.modal-footer {
+	text-align: left !important;
+}
+.modal-content {
+	padding-bottom: 0px !important;
 }
 .big-icon {
 	font-size: 25px;
+	margin-right: 20px;
 }
 .big-round {
 	border-radius: 20px;
 }
 .modal-image {
-	width: 100%;
+	width: 80%;
+	margin-left: 10%;
 }
 .image-container {
 	margin: 0 auto;

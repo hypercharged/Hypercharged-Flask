@@ -1,7 +1,11 @@
 {
+	"IMG_2565.jpg": {
+		"event": "" ,
+		"car": "Nissan Skyline GT-R"
+	},
 	"IMG_2647-3.jpg": {
 		"event": "Lamborghini Newport Beach" ,
-		"car" "Porsche 959": 
+		"car": "Porsche 959"
 	},
 	"IMG_3065.jpg": {
 		"event": "O'Gara San Diego Open House",
@@ -28,12 +32,12 @@
 		"car": ""
 	},
 	"IMG_6782.jpg": {
-		"event": ,
-		"car": 
+		"event": "",
+		"car": ""
 	},
 	"IMG_6794.jpg": {
-		"event": ,
-		"car": 
+		"event": "",
+		"car": ""
 	},
 	"IMG_8531 (1).jpg": {
 		"event": "Tip A Cop",

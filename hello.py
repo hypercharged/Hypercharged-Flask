@@ -15,12 +15,12 @@ settings = {
 app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS']=True
 
 def retrieveMetaData():
-	with open('config.json', 'r') as f:
-		jsonF = json.loads(f);
+	with open('config.json') as f:
+		jsonF = json.loads(f.read());
 		return jsonF
 def getImagesCarEvents():
-	with open('config.json', 'r') as f:
-		jsonF = json.loads(f)
+	with open('config.json') as f:
+		jsonF = json.loads(f.read())
 		for key,value in jsonF:
 			if (value["event"] not in carEvents):
 				carEvents["events"].append(value["event"])
@@ -33,7 +33,6 @@ def home():
 	for image in images:
 		if ("IMG" not in image):
 			images.remove(image)
-			metadata[image].append()
 		print(image)
 	return render_template('home.html', name="Home", description = settings["Home"]["description"], images=images, metadata=metadata)
 @app.route('/favicon.ico')
