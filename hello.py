@@ -1,4 +1,9 @@
-from flask import Flask, render_template; import os, json; from flask_sitemap import Sitemap;    
+from flask import Flask, render_template; 
+import os, json; 
+from flask_sitemap import Sitemap;
+from flask import send_from_directory
+
+
 app = Flask(__name__)
 smp = Sitemap(app=app)
 carEvents = []
@@ -20,6 +25,7 @@ def getImagesCarEvents():
 			if (value["event"] not in carEvents):
 				carEvents["events"].append(value["event"])
 			carEvents["images"][value["event"]].append(key)
+
 @app.route('/')
 def home():
 	images = os.listdir(os.path.join(app.static_folder, "assets"))
@@ -28,6 +34,11 @@ def home():
 			images.remove(image)
 		print(image)
 	return render_template('home.html', name="Home", description = settings["Home"]["description"], images=images)
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                          'favicon.ico',mimetype='image/vnd.microsoft.icon'
 
 if __name__ == '__main__':
 	app.run(debug=True)
