@@ -9,6 +9,16 @@
 	height: 200px;
 	transition: transform 0.2s;
 }
+.modal {
+	max-height: 100% !important;
+	border: 5px solid white;
+}
+.big-icon {
+	font-size: 25px;
+}
+.big-round {
+	border-radius: 20px;
+}
 .modal-image {
 	width: 100%;
 }
