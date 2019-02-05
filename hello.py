@@ -2,6 +2,8 @@ from flask import Flask, render_template, send_from_directory, request;
 import os, json, stripe, pickle; 
 from flask_sitemap import Sitemap;
 from Shop.Wallpaper import Wallpaper
+import Login.Login as FB;
+import Login.DBDetails as Settings;
 
 app = Flask(__name__)
 smp = Sitemap(app=app)
@@ -57,6 +59,9 @@ def home():
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                           'favicon.ico',mimetype='image/vnd.hypercharged.icon')
+def LoginActivity(email, password):
+    Firebase = FB.Config(Settings.settings)
+    user = FB.UserLogin(email=email, password=password, cfg=Firebase)
 
 @app.route('/buy')
 def buy():
