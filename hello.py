@@ -1,8 +1,6 @@
-from flask import Flask, render_template; 
-import os, json; 
+from flask import Flask, render_template, send_from_directory, request; 
+import os, json, stripe; 
 from flask_sitemap import Sitemap;
-from flask import send_from_directory
-
 
 app = Flask(__name__)
 smp = Sitemap(app=app)
@@ -12,6 +10,14 @@ settings = {
 		"description" : "Hello"
 	}
 }
+if (os.environ.get("SECRET_KEY") == None):
+	secret = input("SECRET KEY: "); publishable = input("PUBLISHABLE KEY: ")
+	os.environ["SECRET_KEY"] = secret; os.environ["PUBLISHABLE_KEY"] = publishable
+stripe_keys = {
+  'secret_key': os.environ['SECRET_KEY'],
+  'publishable_key': os.environ['PUBLISHABLE_KEY']
+}
+stripe.api_key = stripe_keys['secret_key']
 app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS']=True
 
 def retrieveMetaData():
@@ -39,6 +45,33 @@ def home():
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                           'favicon.ico',mimetype='image/vnd.hypercharged.icon')
+
+@app.route('/buy')
+def buy():
+	return render_template('buy.html', name="Buy", description = settings["Home"]["description"], key = stripe_keys["publishable_key"])
+@app.route('/charge', methods=['POST'])
+def charge():
+    # Amount in cents
+    amount = 99999999
+
+    customer = stripe.Customer.create(
+        email='customer@example.com', #put user email here
+        source=request.form['stripeToken']
+    )
+
+    charge = stripe.Charge.create(
+        customer=customer.id,
+        amount=amount,
+        currency='usd',
+        description='Flask Charge'
+    )
+    product = stripe.Product.create(
+		  name='Hypercharged Wallpaper',
+		  type='good',
+		  attributes=['download_url'],
+		  description='High-quality wallpaper straight from the source',
+		)
+    return render_template('charge.html', amount=amount)
 
 if __name__ == '__main__':
 	app.run(debug=True)
