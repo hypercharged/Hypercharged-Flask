@@ -1,9 +1,17 @@
-from flask import Flask, render_template, send_from_directory, request; 
+from flask import Flask, render_template, send_from_directory, request, session, flash, redirect; 
 import os, json, stripe, pickle; 
 from flask_sitemap import Sitemap;
+from flask_socketio import SocketIO;
+from wtforms import Form, BooleanField, StringField, PasswordField, validators
 from Shop.Wallpaper import Wallpaper
 import Login.Login as FB;
 import Login.DBDetails as Settings;
+
+
+
+
+
+
 
 app = Flask(__name__)
 smp = Sitemap(app=app)
@@ -15,6 +23,8 @@ settings = {
     }
 }
 secret, publish = "",""
+socketio = SocketIO(app)
+
 """
 
 KEY FOR DEVS: DO NOT, UNDER ANY CIRCUMSTANCE, LEAK SECRET OR PUBLISHABLE KEYS --> Stored in keypair.hypercharged file
@@ -33,6 +43,18 @@ stripe_keys = {
 }
 stripe.api_key = stripe_keys['secret_key']
 app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS']=True
+app.config['SECRET_KEY'] = secret
+
+def LoginActivity(email, password):
+    Firebase = FB.Config(Settings.settings)
+    user = FB.UserLogin(email=email, password=password, cfg=Firebase)
+    try:
+        session["user"] = user.auth.get_account_info(user.user["idToken"])["users"]
+    except Exception as e:
+        print(e)
+def LogoutActivity():
+    session.pop("user", None)
+
 
 def retrieveMetaData():
     with open('config.json') as f:
@@ -46,6 +68,27 @@ def getImagesCarEvents():
                 carEvents["events"].append(value["event"])
             carEvents["images"][value["event"]].append(key)
 
+class LoginForm(Form):
+    username = StringField('Username', [validators.Length(min=4, max=25)], render_kw={'class':'white-text'})
+    email = StringField('Email Address', [validators.Length(min=6, max=35)], render_kw={'class':'white-text'})
+    password = PasswordField('New Password', [
+        validators.DataRequired(),
+        validators.EqualTo('confirm', message='Passwords must match'),
+        
+    ],render_kw={'class':'white-text'})
+    confirm = PasswordField('Repeat Password')
+###
+###     LOGIN FORM
+###
+@app.route('/login', methods=['GET', 'POST'])
+def register():
+    form = LoginForm(request.form)
+    if request.method == 'POST' and form.validate():
+        LoginActivity(form.email.data, form.password.data)
+        flash('Thanks for registering')
+        return redirect('/')
+    return render_template('login.html', form=form)
+
 @app.route('/')
 def home():
     images = os.listdir(os.path.join(app.static_folder, "assets"))
@@ -53,16 +96,11 @@ def home():
     for image in images:
         if ("IMG" not in image):
             images.remove(image)
-        print(image)
     return render_template('home.html', name="Home", description = settings["Home"]["description"], images=images, metadata=metadata)
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                           'favicon.ico',mimetype='image/vnd.hypercharged.icon')
-def LoginActivity(email, password):
-    Firebase = FB.Config(Settings.settings)
-    user = FB.UserLogin(email=email, password=password, cfg=Firebase)
-
 @app.route('/buy')
 def buy():
     return render_template('buy.html', name="Buy", description = settings["Home"]["description"], key = stripe_keys["publishable_key"])

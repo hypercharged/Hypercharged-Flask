@@ -6,12 +6,13 @@ class CreateAccount:
     def __init__(self):
         print()
 class UserLogin:
+    auth = None
     def __init__(self, email, password, cfg):
-        auth = cfg.config.auth()
+        self.auth = cfg.config.auth()
         try:
-            auth.sign_in_with_email_and_password(email, password)
+            self.user = self.auth.sign_in_with_email_and_password(email, password)
         except:
             try:
-                auth.create_user_with_email_and_password(email, password)
-            except:
-                print("EMAIL/PASSWORD incorrect")
+                self.user = self.auth.create_user_with_email_and_password(email, password)
+            except Exception as e:
+                print(e)
