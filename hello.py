@@ -1,10 +1,19 @@
 from flask import Flask, render_template, send_from_directory, request, session, flash, redirect; 
 import os, json, stripe, pickle; 
 from flask_sitemap import Sitemap;
-from flask_socketio import SocketIO;
-from wtforms import Form, BooleanField, StringField, PasswordField, validators
+#
+#   Shop Classes/Libraries
+#
 from Shop.Wallpaper import Wallpaper
+#
+#   Firebase Python Classes
+#
+from wtforms import Form, BooleanField, StringField, PasswordField, validators
 import Login.Login as FB;
+from flask_socketio import SocketIO;
+#
+#   GitIgnore'd
+#
 import Login.DBDetails as Settings;
 
 
@@ -33,6 +42,7 @@ KEY FOR DEVS: DO NOT, UNDER ANY CIRCUMSTANCE, LEAK SECRET OR PUBLISHABLE KEYS --
 try:
     pick = pickle.load(open(PICKLE_FILE, 'rb'))
     publish = pick["PUBLISHABLE_KEY"]
+    print(publish)
     secret = pick["SECRET_KEY"]
 except:
     secret = input("SECRET KEY: "); publish = input("PUBLISHABLE KEY: ")
@@ -43,7 +53,7 @@ stripe_keys = {
 }
 stripe.api_key = stripe_keys['secret_key']
 app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS']=True
-app.config['SECRET_KEY'] = secret
+app.config['SECRET_KEY'] = secret # Temporary ---> SOCKET IO KEY same as STRIPE KEYs
 
 def LoginActivity(email, password):
     Firebase = FB.Config(Settings.settings)
@@ -83,7 +93,7 @@ class LoginForm(Form):
 @app.route('/login', methods=['GET', 'POST'])
 def register():
     form = LoginForm(request.form)
-    if request.method == 'POST' and form.validate():
+    if request.method == 'POST' and form.validate() and (session.get("user",None) == None):
         LoginActivity(form.email.data, form.password.data)
         flash('Thanks for registering')
         return redirect('/')
@@ -109,9 +119,10 @@ def charge():
     # Amount in cents
     amount  = 100
     customer = stripe.Customer.create(
-        email="example@example.com", #put user email here
+        email=session["user"]["email"], #put user email here
         source=request.form['stripeToken']
     )
+    print(session["user"]["email"])
 
     charge = stripe.Charge.create(
         customer=customer.id,
@@ -129,5 +140,5 @@ def charge():
     return render_template('charge.html', amount=amount)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    socketio.run(app, debug=True)
 
