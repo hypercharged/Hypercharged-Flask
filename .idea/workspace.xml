@@ -2,76 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1bb765a-af70-4412-b604-2a9179a0f459" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/runtime.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Flask-Website.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/Login.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shop/Prices.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shop/Wallpaper.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shop/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_1868-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_2565.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_2571-Edit.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_2647-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_3065.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_3160.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_6713.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_6756.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_6777.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_6781.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_6782.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_6794.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_8531 (1).jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_8535 (1).jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_8574-Edit-Edit.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_8576 (1).jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_8581.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_8591.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_8597-Edit.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_8599.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_8612-Edit.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_8668.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_8682.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_8685.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_8689 (1).jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_8695.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_8696.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_8714-Edit.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_8716.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_8718.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/IMG_8719.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/hctransparent.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/animate.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/materialize.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/jquery-2.1.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/materialize.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/rellax.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/wow.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/_formhelpers.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/about.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/buy.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/charge.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/footer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/head.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -80,7 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Procfile">
           <provider selected="true" editor-type-id="text-editor">
@@ -98,8 +29,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/hello.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-170">
-              <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+            <state relative-caret-position="102">
+              <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#96#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -138,16 +72,17 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-371" />
+    <option name="x" value="-372" />
     <option name="y" value="-30" />
-    <option name="width" value="1946" />
-    <option name="height" value="1106" />
+    <option name="width" value="1947" />
+    <option name="height" value="1107" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -164,7 +99,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -212,7 +146,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1550625628822</updated>
-      <workItem from="1550625630401" duration="7070000" />
+      <workItem from="1550625630401" duration="7268000" />
+      <workItem from="1550635347920" duration="69000" />
+      <workItem from="1550635517720" duration="53000" />
     </task>
     <task id="LOCAL-00001" summary="Added new high res files">
       <created>1550627684809</created>
@@ -232,21 +168,15 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7070000" />
+    <option name="totallyTimeSpent" value="7390000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24939272" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2582996" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" weight="0.3285968" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.3285968" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -254,11 +184,17 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="SciView" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3534636" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.3285968" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,54 +206,13 @@
     <option name="LAST_COMMIT_MESSAGE" value="Completely restyled" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/js/main.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/about.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="1" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/head.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="49" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hello.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="114" selection-start-line="114" selection-end-line="114" />
-          <folding>
-            <element signature="e#0#97#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/main.js" />
+    <entry file="file://$PROJECT_DIR$/templates/about.html" />
+    <entry file="file://$PROJECT_DIR$/static/css/main.css" />
+    <entry file="file://$PROJECT_DIR$/templates/head.html" />
+    <entry file="file://$PROJECT_DIR$/config.json" />
+    <entry file="file://$PROJECT_DIR$/templates/home.html" />
+    <entry file="file://$PROJECT_DIR$/hello.py" />
     <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -330,8 +225,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/hello.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-170">
-          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+        <state relative-caret-position="102">
+          <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#96#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
