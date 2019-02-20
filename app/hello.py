@@ -9,12 +9,12 @@ from .Shop.Wallpaper import Wallpaper
 #   Firebase Python Classes
 #
 from wtforms import Form, BooleanField, StringField, PasswordField, validators
-from .Login import Login as FB
+from .Login.Login import Config, UserLogin
 from flask_socketio import SocketIO
 #
 #   GitIgnore'd
 #
-from .Login import DBDetails as Settings
+#   import .Login.DBDetails as Settings
 
 app = Flask(__name__)
 smp = Sitemap(app=app)
@@ -54,8 +54,8 @@ app.config['SECRET_KEY'] = secret # Temporary ---> SOCKET IO KEY same as STRIPE 
 
 
 def LoginActivity(email, password):
-    firebase = FB.Config(Settings.settings)
-    user = FB.UserLogin(email=email, password=password, cfg=firebase)
+    firebase = Config(Settings.settings)
+    user = UserLogin(email=email, password=password, cfg=firebase)
     try:
         session["user"] = user.auth.get_account_info(user.user["idToken"])["users"]
     except Exception as e:
