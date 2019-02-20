@@ -8,14 +8,13 @@ from Shop.Wallpaper import Wallpaper
 #
 #   Firebase Python Classes
 #
-from wtforms import Form, BooleanField, StringField, PasswordField, validators
-from Login.Login import Config, UserLogin
+from wtforms import Form, StringField, PasswordField, validators
 from flask_socketio import SocketIO
 #
 #   GitIgnore'd
 #
 if os.environ.get("apiKey") is None:
-    from Login.DBDetails import Settings
+    from Shop.DBDetails import Settings
 
 app = Flask(__name__)
 smp = Sitemap(app=app)
