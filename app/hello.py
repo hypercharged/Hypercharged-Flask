@@ -14,7 +14,8 @@ from flask_socketio import SocketIO
 #
 #   GitIgnore'd
 #
-#   import .Login.DBDetails as Settings
+if os.environ.get("apiKey") is None:
+    from .Login.DBDetails import Settings
 
 app = Flask(__name__)
 smp = Sitemap(app=app)
@@ -50,11 +51,21 @@ stripe_keys = {
 }
 stripe.api_key = stripe_keys['secret_key']
 app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS']=True
-app.config['SECRET_KEY'] = secret # Temporary ---> SOCKET IO KEY same as STRIPE KEYs
+app.config['SECRET_KEY'] = secret  # Temporary ---> SOCKET IO KEY same as STRIPE KEYs
 
 
 def LoginActivity(email, password):
-    firebase = Config(Settings.settings)
+    if os.environ.get("apiKey") is None:
+        firebase = Config(Settings.settings)
+    else:
+        firebase = Config({
+            "apiKey": os.environ.get("apiKey"),
+            "authDomain": os.environ.get("authDomain"),
+            "databaseURL": os.environ.get("databaseURL"),
+            "projectId": os.environ.get("projectId"),
+            "storageBucket": os.environ.get("storageBucket"),
+            "messagingSenderId": os.environ.get("messagingSenderId")
+        })
     user = UserLogin(email=email, password=password, cfg=firebase)
     try:
         session["user"] = user.auth.get_account_info(user.user["idToken"])["users"]
