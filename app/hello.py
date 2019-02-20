@@ -1,6 +1,8 @@
 from flask import Flask, render_template, send_from_directory, request, session, flash, redirect
-import os, json, stripe, pickle, datetime, sys
+import os, json, stripe, pickle, datetime, pyrebase, random, string
 from flask_sitemap import Sitemap
+from enum import Enum
+
 #
 #   Shop Classes/Libraries
 #
@@ -12,16 +14,45 @@ from flask_socketio import SocketIO
 #
 #   GitIgnore'd
 #
-if os.environ.get("apiKey") is not None:
-    from Login.Login import *
+try:
     from DBDetails import *
-    from Prices import *
-    from Shop.Wallpaper import *
-else:
-    from .Login.Login import *
-    from .Shop.DBDetails import *
-    from .Shop.Prices import *
-    from .Shop.Wallpaper import *
+except Exception:
+    print()
+#   Class declaration for Heroku since it's lazy AF
+
+class Prices(Enum):
+	ITEM_1 = 1.00
+	ITEM_2 = 1.50
+	ITEM_3 = 2.00
+
+class Config:
+    def __init__(self, conf):
+        self.config = pyrebase.initialize_app(conf)
+class CreateAccount:
+    def __init__(self):
+        print()
+class UserLogin:
+    auth = None
+    def __init__(self, email, password, cfg):
+        self.auth = cfg.config.auth()
+        try:
+            self.user = self.auth.sign_in_with_email_and_password(email, password)
+        except:
+            try:
+                self.user = self.auth.create_user_with_email_and_password(email, password)
+            except Exception as e:
+                print(e)
+
+class Wallpaper:
+	BASE_URL = "localhost:5000"
+	amount, price, user_uid = 0, 0, ""
+	def __init__(self,  *args, **kwargs):
+		self.amount = kwargs.get("amount")
+		self.price = Prices[kwargs.get("amount")].value
+		self.user_uid = kwargs.get("uuid")
+		self.wallpaper_id = kwargs.get("wallpaper_id")
+		self.request_token = ''.join(random.choices(string.ascii_letters + string.digits, k=16))
+
 
 app = Flask(__name__)
 smp = Sitemap(app=app)
