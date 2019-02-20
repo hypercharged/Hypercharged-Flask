@@ -1,4 +1,4 @@
-from .Prices import Prices; import random, string
+from app.Shop.Prices import Prices; import random, string
 class Wallpaper:
 	BASE_URL = "localhost:5000"
 	amount, price, user_uid = 0, 0, ""
