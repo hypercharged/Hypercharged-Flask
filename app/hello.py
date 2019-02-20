@@ -4,17 +4,17 @@ from flask_sitemap import Sitemap
 #
 #   Shop Classes/Libraries
 #
-from Shop.Wallpaper import Wallpaper
+from .Shop.Wallpaper import Wallpaper
 #
 #   Firebase Python Classes
 #
 from wtforms import Form, BooleanField, StringField, PasswordField, validators
-import Login.Login as FB
+from .Login import Login as FB
 from flask_socketio import SocketIO
 #
 #   GitIgnore'd
 #
-import Login.DBDetails as Settings
+from .Login import DBDetails as Settings
 
 app = Flask(__name__)
 smp = Sitemap(app=app)
