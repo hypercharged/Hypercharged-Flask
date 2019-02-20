@@ -18,7 +18,7 @@ from flask_socketio import SocketIO
 
 app = Flask(__name__)
 smp = Sitemap(app=app)
-PICKLE_FILE = "app/keypair.hypercharged"
+PICKLE_FILE = "keypair.hypercharged"
 carEvents = []
 settings = {
     "Home": {
