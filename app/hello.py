@@ -13,10 +13,10 @@ from flask_socketio import SocketIO
 #   GitIgnore'd
 #
 if os.environ.get("apiKey") is not None:
-    from app.app.Login.Login import *
-    from app.app.Shop.DBDetails import *
-    from app.app.Shop.Prices import *
-    from app.app.Shop.Wallpaper import *
+    from Login.Login import *
+    from DBDetails import *
+    from Prices import *
+    from Shop.Wallpaper import *
 else:
     from .Login.Login import *
     from .Shop.DBDetails import *
