@@ -4,18 +4,18 @@ from flask_sitemap import Sitemap
 #
 #   Shop Classes/Libraries
 #
-from .Shop.Wallpaper import Wallpaper
+from Shop.Wallpaper import Wallpaper
 #
 #   Firebase Python Classes
 #
 from wtforms import Form, BooleanField, StringField, PasswordField, validators
-from .Login.Login import Config, UserLogin
+from Login.Login import Config, UserLogin
 from flask_socketio import SocketIO
 #
 #   GitIgnore'd
 #
 if os.environ.get("apiKey") is None:
-    from .Login.DBDetails import Settings
+    from Login.DBDetails import Settings
 
 app = Flask(__name__)
 smp = Sitemap(app=app)
