@@ -1,7 +1,6 @@
 from flask import Flask, render_template, send_from_directory, request, session, flash, redirect
 import os, json, stripe, pickle, datetime, sys
 from flask_sitemap import Sitemap
-sys.path.append(os.path.dirname(os.path.abspath(__file__))+"/Shop/")
 #
 #   Shop Classes/Libraries
 #
@@ -13,9 +12,17 @@ from flask_socketio import SocketIO
 #
 #   GitIgnore'd
 #
-from Shop.DBDetails import Settings
-from Shop.Wallpaper import Wallpaper
-from Login.Login import Config, UserLogin
+if os.environ.get("apiKey") is not None:
+    from app.Login.Login import *
+    from app.Shop.DBDetails import *
+    from app.Shop.Prices import *
+    from app.Shop.Wallpaper import *
+else:
+    from .Login.Login import *
+    from .Shop.DBDetails import *
+    from .Shop.Prices import *
+    from .Shop.Wallpaper import *
+
 app = Flask(__name__)
 smp = Sitemap(app=app)
 PICKLE_FILE = "keypair.hypercharged"
