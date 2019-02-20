@@ -4,7 +4,6 @@ from flask_sitemap import Sitemap
 #
 #   Shop Classes/Libraries
 #
-from .Shop.Wallpaper import Wallpaper
 #
 #   Firebase Python Classes
 #
@@ -13,8 +12,9 @@ from flask_socketio import SocketIO
 #
 #   GitIgnore'd
 #
-if os.environ.get("apiKey") is None:
+if os.environ.get("apiKey") is not None:
     from .Shop.DBDetails import Settings
+    from .Shop.Wallpaper import Wallpaper
 
 app = Flask(__name__)
 smp = Sitemap(app=app)

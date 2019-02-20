@@ -10,7 +10,7 @@
 				   		<tr>
 				   	{% endif %}
 				   	<td><a  href="#modal{{loop.index-1}}" class="modal-trigger">
-                        <img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width z-depth-4"/>
+                        <img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width z-depth-4 wow bounceInUp"/>
                             </a>
                             </td>
 					  <div class="modal black big-round" id="modal{{loop.index-1}}">
