@@ -13,16 +13,14 @@
 tr {
 	border-bottom: none;
 }
+.forced-center {
+	margin: 0 auto !important;
+	display: block;
+}
 .modal {
 	max-height: 100% !important;
 	border: 5px solid white;
 	transform: translateY(-10%) !important;
-}
-.description-text {
-	position: absolute;
-  	top: 50%;
-  	left: 50%;
-  	transform: translate(-50%, -50%);
 }
 * {
 	font-family: "Major Mono Display";

@@ -2,17 +2,17 @@
 {% block content %}
 		 <table class="image-container hide-on-small-only">
 		{% for image in images %}
-			{% if image != "hctransparent.png"%}
-					{% if loop.index == 1 %}
+            {% if image != "hctransparent.png"%}
+					{% if loop.index == 2 %}
 						<tr>
-					{% elif (loop.index-1) % 2 == 0 or loop.index == 2%}
+					{% elif (loop.index-1) % 2 -1 == 0 %}
 						</tr>
 				   		<tr>
 				   	{% endif %}
 				   	<td><a  href="#modal{{loop.index-1}}" class="modal-trigger">
-                        <img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width z-depth-4"/></a>
-                        <div class="description-text">Hello</div>
-                    </td>
+                        <img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width z-depth-4"/>
+                            </a>
+                            </td>
 					  <div class="modal black big-round" id="modal{{loop.index-1}}">
 					    <div class="modal-content">
 					      <img src="{{ url_for('static', filename='assets/' + image) }}" class="modal-image big-round"></img>
@@ -27,14 +27,16 @@
 					    </div>
 					    
 					  </div>
-			{% endif %}
+            {% endif %}
 		{% endfor %}
 	</table>
 	<table class="image-container hide-on-med-and-up">
 		{% for image in images %}
+            {% if image != "hctransparent.png"%}
 			<tr>
 				   	<td><img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width"></img></td>
 			</tr>
+            {%  endif %}
 		{% endfor %}
 	</table>
 

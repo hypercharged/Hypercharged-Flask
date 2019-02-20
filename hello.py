@@ -110,7 +110,7 @@ def home():
     images = os.listdir(os.path.join(app.static_folder, "assets"))
     metadata = retrieveMetaData()
     for image in images:
-        if ("IMG" not in image):
+        if "IMG" not in image:
             images.remove(image)
     now = datetime.datetime.now().year
     return render_template('home.html', name="Home", description=settings["Home"]["description"], images=images, metadata=metadata, year=now)
