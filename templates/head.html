@@ -13,7 +13,7 @@
     <title>{{name}}</title>
       {# Import all variables for descriptions, titles, etc. #}
 </head>
-<body class="black">
+<body class="white">
 	<nav>
     <div class="nav-wrapper black">
       <img src="{{url_for('static', filename='assets/hctransparent.png') }}" href="#" height="60" class="brand-logo"></img>
@@ -26,6 +26,9 @@
   </nav>
 	{% block content %}
 	      {% endblock %}
+    <footer class="black white-text">
+        Copyright Hypercharged {{ year }}
+    </footer>
 </body>
 {# Load JS last for optimized load time #}
 	 <script defer="defer" src="{{ url_for('static', filename='js/jquery-2.1.1.min.js') }}"></script>

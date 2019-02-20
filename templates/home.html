@@ -6,14 +6,13 @@
 			{% if image != "hctransparent.png"%}
 					{% if loop.index == 1 %}
 						<tr>
-					{% elif (loop.index-1) % 3 == 0 %}
+					{% elif (loop.index-1) % 2 == 0 %}
 						</tr>
 				   		<tr>
 				   	{% endif %}
-				   	<td><a  href="#modal{{loop.index-1}}" class="modal-trigger"><img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width"></img></a></td>
+				   	<td><a  href="#modal{{loop.index-1}}" class="modal-trigger"><img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width z-depth-4"/></a></td>
 					  <div class="modal black big-round" id="modal{{loop.index-1}}">
 					    <div class="modal-content">
-					      
 					      <img src="{{ url_for('static', filename='assets/' + image) }}" class="modal-image big-round"></img>
 					    </div>
 					    <div class="modal-footer black">
