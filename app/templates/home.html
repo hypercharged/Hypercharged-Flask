@@ -1,0 +1,54 @@
+{% extends "head.html" %}
+{% block content %}
+		 <table class="image-container hide-on-small-only">
+		{% for image in images %}
+            {% if image != "hctransparent.png"%}
+					{% if loop.index == 2 %}
+						<tr>
+                        <td><a  href="#modal{{loop.index-1}}" class="modal-trigger">
+                        <img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width z-depth-4 wow slideInLeft"/>
+                            </a>
+                            </td>
+					{% elif (loop.index-1) % 2 - 1 == 0 %}
+						</tr>
+				   		<tr>
+                        <td><a  href="#modal{{loop.index-1}}" class="modal-trigger">
+                        <img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width z-depth-4 wow slideInLeft"/>
+                            </a>
+                            </td>
+                    {% else %}
+                        <td><a  href="#modal{{loop.index-1}}" class="modal-trigger">
+                        <img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width z-depth-4 wow slideInRight"/>
+                            </a>
+                            </td>
+				   	{% endif %}
+
+					  <div class="modal black big-round" id="modal{{loop.index-1}}">
+					    <div class="modal-content">
+					      <img src="{{ url_for('static', filename='assets/' + image) }}" class="modal-image big-round"></img>
+					    </div>
+					    <div class="modal-footer black">
+					    	
+					    	{% if metadata[image]["event"] != "N/A" and metadata[image]["event"] != ""%}
+								<h5 class="white-text left"><a><i class="fab fa-instagram pink-text big-icon"></a></i>{{metadata[image]["car"]}}<br>{{metadata[image]["event"]}}</h5>
+					    	{% else %}
+								<h5 class="white-text left"><a><i class="fab fa-instagram pink-text big-icon"></a></i> {{metadata[image]["car"]}} In The Wild</h5>
+					    	{% endif %}
+					    </div>
+					    
+					  </div>
+            {% endif %}
+		{% endfor %}
+	</table>
+	<table class="image-container hide-on-med-and-up">
+		{% for image in images %}
+            {% if image != "hctransparent.png"%}
+			<tr>
+				   	<td><img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width"></img></td>
+			</tr>
+            {%  endif %}
+		{% endfor %}
+	</table>
+
+	</div>
+{% endblock %}
