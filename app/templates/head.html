@@ -30,9 +30,9 @@
         <img class="forced-center" src="{{ url_for('static', filename='assets/hctransparent.png') }}" height="120">
         <h1 class="center" id="header-text">Hypercharged</h1>
         <ul class="pages center list-inline">
-            <li class="page">Home</li>
-            <li class="page">About</li>
-            <li class="page">Contact</li>
+            <a href="{{ url_for('home') }}"><li class="page">Home</li></a>
+            <a href="{{ url_for('about') }}"><li class="page">About</li></a>
+            <a href="{{ url_for('home') }}"><li class="page">Contact</li></a>
         </ul>
         {% block content %}
               {% endblock %}
