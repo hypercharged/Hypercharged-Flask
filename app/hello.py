@@ -125,6 +125,9 @@ def home():
     now = datetime.datetime.now().year
     return render_template('home.html', name="Home", description=settings["Home"]["description"], images=images, metadata=metadata, year=now)
 
+@app.route('/about/')
+def about():
+    return render_template('about.html')
 
 @app.route('/favicon.ico')
 def favicon():
