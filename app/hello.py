@@ -184,7 +184,10 @@ def home():
         print(image, "IMG" not in image)
         if "IMG" not in image:
             images.remove(image)
-    images.remove("favicon")
+    try:
+        images.remove("favicon")
+    except:
+        print("Favicon not removed")
     now = datetime.datetime.now().year
     return flask.render_template('home.html', name="Home", description=settings["Home"]["description"], images=images,
                                  metadata=metadata, year=now)
