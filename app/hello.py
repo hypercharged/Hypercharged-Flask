@@ -8,6 +8,7 @@ import string
 import stripe
 import enum
 import flask
+from flask import render_template, redirect
 import flask_sitemap
 import flask_socketio
 #
@@ -198,7 +199,7 @@ def favicon():
 
 @app.route('/buy')
 def buy():
-    return flask.render_template('buy.html', name="Buy", description=settings["Home"]["description"],
+    return render_template('buy.html', name="Buy", description=settings["Home"]["description"],
                                  key=stripe_keys["publishable_key"])
 
 
@@ -223,7 +224,7 @@ def charge():
         description='High-quality wallpaper straight from the source',
     )
     Wallpaper(amount="ITEM_1", uuid=customer.id, wallpaper_id=1)
-    return flask.render_template('charge.html', amount=amount)
+    return render_template('charge.html', amount=amount)
 
 
 if __name__ == '__main__':

@@ -21,7 +21,9 @@ tr {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+}
+#about-image {
+	width: 50%;
 }
 .modal {
 	max-height: 100% !important;
@@ -55,16 +57,16 @@ tr {
 .full-width:hover {
 	opacity: 0.8;
 }
-@media and screen(max-width: 650px) {
-	.full-width {
-		width: 100%;
-		max-height: 200px;
-		border-radius: 20px;
+@media screen and (max-width : 650px) {
+	#about-image {
+		width: 100% !important;
+	}
+	#header-text {
+		font-size: 20pt;
 	}
 }
 .list-inline {
   padding-left: 0;
-  margin-left: -5px;
   list-style: none;
 }
 .list-inline > li {
@@ -83,3 +85,5 @@ tr {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+#about-paragraph {font-family: 'Montserrat';}
+#about-header {font-size: 36pt !important;}
