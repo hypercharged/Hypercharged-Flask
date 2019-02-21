@@ -5,14 +5,24 @@
             {% if image != "hctransparent.png"%}
 					{% if loop.index == 2 %}
 						<tr>
-					{% elif (loop.index-1) % 2 -1 == 0 %}
-						</tr>
-				   		<tr>
-				   	{% endif %}
-				   	<td><a  href="#modal{{loop.index-1}}" class="modal-trigger">
-                        <img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width z-depth-4 wow bounceInUp"/>
+                        <td><a  href="#modal{{loop.index-1}}" class="modal-trigger">
+                        <img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width z-depth-4 wow slideInLeft"/>
                             </a>
                             </td>
+					{% elif (loop.index-1) % 2 - 1 == 0 %}
+						</tr>
+				   		<tr>
+                        <td><a  href="#modal{{loop.index-1}}" class="modal-trigger">
+                        <img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width z-depth-4 wow slideInLeft"/>
+                            </a>
+                            </td>
+                    {% else %}
+                        <td><a  href="#modal{{loop.index-1}}" class="modal-trigger">
+                        <img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width z-depth-4 wow slideInRight"/>
+                            </a>
+                            </td>
+				   	{% endif %}
+
 					  <div class="modal black big-round" id="modal{{loop.index-1}}">
 					    <div class="modal-content">
 					      <img src="{{ url_for('static', filename='assets/' + image) }}" class="modal-image big-round"></img>
