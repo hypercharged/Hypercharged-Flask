@@ -1,32 +1,88 @@
-from flask import Flask, render_template, send_from_directory, request, session, flash, redirect
-import os, json, stripe, pickle, datetime
-from flask_sitemap import Sitemap
+import datetime
+import json
+import os
+import pickle
+import pyrebase
+import random
+import string
+import stripe
+import enum
+import flask
+from flask import render_template, redirect
+import flask_sitemap
+import flask_socketio
 #
 #   Shop Classes/Libraries
 #
 #
 #   Firebase Python Classes
 #
-from wtforms import Form, StringField, PasswordField, validators
-from flask_socketio import SocketIO
+import wtforms
+
 #
 #   GitIgnore'd
 #
-if os.environ.get("apiKey") is not None:
-    from .Shop.DBDetails import Settings
-    from .Shop.Wallpaper import Wallpaper
+try:
+    from .DBDetails import *
+except Exception:
+    print()
 
-app = Flask(__name__)
-smp = Sitemap(app=app)
+
+#   Class declaration for Heroku since it's lazy AF
+
+class Prices(enum.Enum):
+    ITEM_1 = 1.00
+    ITEM_2 = 1.50
+    ITEM_3 = 2.00
+
+
+class Config:
+    def __init__(self, conf):
+        self.config = pyrebase.initialize_app(conf)
+
+
+class CreateAccount:
+    def __init__(self):
+        print()
+
+
+class UserLogin:
+    auth = None
+
+    def __init__(self, email, password, cfg):
+        self.auth = cfg.config.auth()
+        try:
+            self.user = self.auth.sign_in_with_email_and_password(email, password)
+        except Exception:
+            try:
+                self.user = self.auth.create_user_with_email_and_password(email, password)
+            except Exception as e:
+                print(e)
+
+
+class Wallpaper:
+    BASE_URL = "localhost:5000"
+    amount, price, user_uid = 0, 0, ""
+
+    def __init__(self, **kwargs):
+        self.amount = kwargs.get("amount")
+        self.price = Prices[kwargs.get("amount")].value
+        self.user_uid = kwargs.get("uuid")
+        self.wallpaper_id = kwargs.get("wallpaper_id")
+        self.request_token = ''.join(random.choices(string.ascii_letters + string.digits, k=16))
+
+
+app = flask.Flask(__name__)
+smp = flask_sitemap.Sitemap(app=app)
 PICKLE_FILE = "keypair.hypercharged"
 carEvents = []
 settings = {
     "Home": {
-        "description" : "Hello"
+        "description": "Hello"
     }
 }
 secret, publish = "", ""
-socketio = SocketIO(app)
+socketio = flask_socketio.SocketIO(app)
 
 """
 
@@ -41,21 +97,21 @@ except FileNotFoundError:
     secret = input("SECRET KEY: ")
     publish = input("PUBLISHABLE KEY: ")
 pickle.dump({
-            "PUBLISHABLE_KEY": publish,
-            "SECRET_KEY": secret
-            }, open(PICKLE_FILE, 'wb'))
+    "PUBLISHABLE_KEY": publish,
+    "SECRET_KEY": secret
+}, open(PICKLE_FILE, 'wb'))
 stripe_keys = {
-  'secret_key': secret,
-  'publishable_key': publish
+    'secret_key': secret,
+    'publishable_key': publish
 }
 stripe.api_key = stripe_keys['secret_key']
-app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS']=True
+app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS'] = True
 app.config['SECRET_KEY'] = secret  # Temporary ---> SOCKET IO KEY same as STRIPE KEYs
 
 
-def LoginActivity(email, password):
+def login_activity(email, password):
     if os.environ.get("apiKey") is None:
-        firebase = Config(Settings.settings)
+        firebase = Config(DBDetails.Settings.settings)
     else:
         firebase = Config({
             "apiKey": os.environ.get("apiKey"),
@@ -67,39 +123,44 @@ def LoginActivity(email, password):
         })
     user = UserLogin(email=email, password=password, cfg=firebase)
     try:
-        session["user"] = user.auth.get_account_info(user.user["idToken"])["users"]
+        flask.session["user"] = user.auth.get_account_info(user.user["idToken"])["users"]
     except Exception as e:
         print(e)
 
 
 def LogoutActivity():
-    session.pop("user", None)
+    flask.session.pop("user", None)
 
 
 def retrieveMetaData():
     with open('app/config.json') as f:
-        file = json.loads(f.read());
+        file = json.loads(f.read())
         return file
 
 
+# noinspection PyTypeChecker
 def getImagesCarEvents():
     with open('app/config.json') as f:
         file = json.loads(f.read())
         for key, value in file:
             if value["event"] not in carEvents:
-                carEvents["events"].append(value["event"])
-            carEvents["images"][value["event"]].append(key)
+                carEvents['events'].append(value["event"])
+            carEvents['images'][value['event']].append(key)
 
 
-class LoginForm(Form):
-    username = StringField('Username', [validators.Length(min=4, max=25)], render_kw={'class':'white-text'})
-    email = StringField('Email Address', [validators.Length(min=6, max=35)], render_kw={'class':'white-text'})
-    password = PasswordField('New Password', [
-        validators.DataRequired(),
-        validators.EqualTo('confirm', message='Passwords must match'),
-        
-    ],render_kw={'class':'white-text'})
-    confirm = PasswordField('Repeat Password')
+class LoginForm(wtforms.Form):
+    username = wtforms.StringField(
+        'Username', [wtforms.validators.Length(min=4, max=25)], render_kw={'class': 'black-text'}
+    )
+    email = wtforms.StringField(
+        'Email Address', [wtforms.validators.Length(min=6, max=35)], render_kw={'class': 'black-text'}
+    )
+    password = wtforms.PasswordField('New Password', [
+        wtforms.validators.DataRequired(),
+        wtforms.validators.EqualTo('confirm', message='Passwords must match'),
+
+    ], render_kw={'class': 'white-text'})
+    confirm = wtforms.PasswordField('Repeat Password')
     """
     LOGIN FORM
     """
@@ -107,12 +168,12 @@ class LoginForm(Form):
 
 @app.route('/login', methods=['GET', 'POST'])
 def register():
-    form = LoginForm(request.form)
-    if request.method == 'POST' and form.validate() and (session.get("user") is None):
-        LoginActivity(form.email.data, form.password.data)
-        flash('Thanks for registering')
-        return redirect('/')
-    return render_template('login.html', form=form)
+    form = LoginForm(flask.request.form)
+    if flask.request.method == 'POST' and form.validate() and (flask.session.get("user") is None):
+        login_activity(form.email.data, form.password.data)
+        flask.flash('Thanks for registering')
+        return flask.redirect('/')
+    return flask.render_template('login.html', form=form)
 
 
 @app.route('/')
@@ -123,7 +184,8 @@ def home():
         if "IMG" not in image:
             images.remove(image)
     now = datetime.datetime.now().year
-    return render_template('home.html', name="Home", description=settings["Home"]["description"], images=images, metadata=metadata, year=now)
+    return flask.render_template('home.html', name="Home", description=settings["Home"]["description"], images=images,
+                                 metadata=metadata, year=now)
 
 @app.route('/about')
 def about():
@@ -131,12 +193,14 @@ def about():
 
 @app.route('/favicon.ico')
 def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.hypercharged.icon')
+    return flask.send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico',
+                                     mimetype='image/vnd.hypercharged.icon')
 
 
 @app.route('/buy')
 def buy():
-    return render_template('buy.html', name="Buy", description = settings["Home"]["description"], key = stripe_keys["publishable_key"])
+    return render_template('buy.html', name="Buy", description=settings["Home"]["description"],
+                                 key=stripe_keys["publishable_key"])
 
 
 @app.route('/charge', methods=['POST'])
@@ -144,8 +208,8 @@ def charge():
     # Amount in cents
     amount = 100
     customer = stripe.Customer.create(
-        email=session["user"]["email"],  # put user email here
-        source=request.form['stripeToken']
+        email=flask.session["user"]["email"],  # put user email here
+        source=flask.request.form['stripeToken']
     )
     stripe.Charge.create(
         customer=customer.id,
@@ -159,7 +223,7 @@ def charge():
         attributes=['download_url'],
         description='High-quality wallpaper straight from the source',
     )
-    wallpaper = Wallpaper(amount="ITEM_1", uuid=customer.id, wallpaper_id=1)
+    Wallpaper(amount="ITEM_1", uuid=customer.id, wallpaper_id=1)
     return render_template('charge.html', amount=amount)
 
 
