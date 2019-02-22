@@ -16,5 +16,7 @@ $(".switch").find("input[type=checkbox]").on("change",function() {
         $('body').removeClass("black");
         $(".white-text").addClass("black-text");
         $(".white-text").removeClass("white-text");
+        $("#logo").attr("src","/static/assets/hctransparent.png")
+
     }
 });
