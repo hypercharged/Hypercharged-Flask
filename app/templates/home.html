@@ -3,7 +3,7 @@
 
 		 <table class="image-container hide-on-small-only">
 		{% for image in images %}
-            {% if image != "hctransparent.png"%}
+            {% if image != "hctransparent.png" and image != "hctransparentdark.png" and image != "favicon" %}
 					{% if loop.index == 1 %}
 						<tr>
                         <td><a  href="#modal{{loop.index-1}}" class="modal-trigger">
