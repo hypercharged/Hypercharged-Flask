@@ -23,7 +23,9 @@ function toggleMode(status) {
         $('body').addClass("black");
         $(".black-text").addClass("white-text");
         $(".black-text").removeClass("black-text");
-        $("#logo").attr("src","/static/assets/hctransparentdark.png")
+        $("#logo").attr("src","/static/assets/hctransparentdark.png");
+        $(".lever").removeClass("blue");
+        $(".lever").addClass("red");
     }
     else {
         $('body').addClass("white");
@@ -31,6 +33,9 @@ function toggleMode(status) {
         $(".white-text").addClass("black-text");
         $(".white-text").removeClass("white-text");
         $("#logo").attr("src","/static/assets/hctransparent.png")
+        $(".lever").addClass("blue");
+        $(".lever").removeClass("red");
 
     }
+    $('.switch').prop('checked', true);
   }

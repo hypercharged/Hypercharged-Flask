@@ -9,6 +9,9 @@
 	height: 200px;
 	transition: ease all 0.2s;
 }
+.switch label input[type=checkbox]:checked+.lever:after {
+	background: white;
+}
 
 tr {
 	border-bottom: none;
