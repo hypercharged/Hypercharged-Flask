@@ -1,9 +1,24 @@
-  $(document).ready(function(){
+var isPreserved = false;
+$(document).ready(function(){
+    try {
+        if (document.cookie.split("mode=")[1] == "true" || document.cookie.split("mode=")[1] == "false") {
+            isPreserved = true;
+            toggleMode(document.cookie.split("mode=")[1]=="true");
+        }
+    }
+    catch {
+
+    }
     $('.modal').modal();
     new WOW().init();
   });
 $(".switch").find("input[type=checkbox]").on("change",function() {
     var status = $(this).prop('checked');
+    if (!isPreserved)
+        document.cookie = "mode="+status;
+    toggleMode(status);
+});
+function toggleMode(status) {
     if (status) {
         $('body').removeClass("white");
         $('body').addClass("black");
@@ -19,4 +34,4 @@ $(".switch").find("input[type=checkbox]").on("change",function() {
         $("#logo").attr("src","/static/assets/hctransparent.png")
 
     }
-});
+  }
