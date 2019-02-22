@@ -14,8 +14,7 @@ $(document).ready(function(){
   });
 $(".switch").find("input[type=checkbox]").on("change",function() {
     var status = $(this).prop('checked');
-    if (!isPreserved)
-        document.cookie = "mode="+status;
+    document.cookie = "mode="+status;
     toggleMode(status);
 });
 function toggleMode(status) {
