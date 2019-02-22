@@ -8,7 +8,7 @@ import string
 import stripe
 import enum
 import flask
-from flask import render_template, redirect
+from flask import render_template
 import flask_sitemap
 import flask_socketio
 #
@@ -24,7 +24,7 @@ import wtforms
 #
 try:
     from .DBDetails import *
-except Exception:
+except ModuleNotFoundError as e:
     print()
 
 
@@ -39,11 +39,6 @@ class Prices(enum.Enum):
 class Config:
     def __init__(self, conf):
         self.config = pyrebase.initialize_app(conf)
-
-
-class CreateAccount:
-    def __init__(self):
-        print()
 
 
 class UserLogin:
@@ -111,7 +106,7 @@ app.config['SECRET_KEY'] = secret  # Temporary ---> SOCKET IO KEY same as STRIPE
 
 def login_activity(email, password):
     if os.environ.get("apiKey") is None:
-        firebase = Config(DBDetails.Settings.settings)
+        firebase = Config(Settings.settings)
     else:
         firebase = Config({
             "apiKey": os.environ.get("apiKey"),
@@ -185,6 +180,7 @@ def home():
         if "IMG" not in image:
             images.remove(image)
     try:
+        images.remove("hctransparentdark.png")
         images.remove("favicon")
     except:
         print("Favicon not removed")
