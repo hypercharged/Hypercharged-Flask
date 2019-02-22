@@ -168,7 +168,7 @@ def register():
         login_activity(form.email.data, form.password.data)
         flask.flash('Thanks for registering')
         return flask.redirect('/')
-    return flask.render_template('login.html', form=form)
+    return flask.render_template('login.html', form=form, name="Login")
 
 
 @app.route('/')
@@ -190,7 +190,7 @@ def home():
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('about.html', name="About")
 
 @app.route('/favicon.ico')
 def favicon():
