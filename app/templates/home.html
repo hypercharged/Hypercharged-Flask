@@ -3,13 +3,13 @@
 		 <table class="image-container hide-on-small-only">
 		{% for image in images %}
             {% if image != "hctransparent.png"%}
-					{% if loop.index == 2 %}
+					{% if loop.index == 1 %}
 						<tr>
                         <td><a  href="#modal{{loop.index-1}}" class="modal-trigger">
                         <img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width z-depth-4 wow slideInLeft"/>
                             </a>
                             </td>
-					{% elif (loop.index-1) % 2 - 1 == 0 %}
+					{% elif (loop.index-1) % 2  == 0 %}
 						</tr>
 				   		<tr>
                         <td><a  href="#modal{{loop.index-1}}" class="modal-trigger">

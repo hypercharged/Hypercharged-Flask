@@ -9,6 +9,7 @@
 	<link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>{{name}}</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
     <link ref="favicon"href="{{ url_for('static', filename='assets/favicon/favicon.ico') }}">
     <link rel="apple-touch-icon" sizes="57x57" href="{{ url_for('static', filename='assets/favicon/apple-icon-57x57.png')}}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{ url_for('static', filename='assets/favicon/apple-icon-60x60.png')}}">
@@ -27,6 +28,11 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{{url_for('static', filename='assets/favicon/ms-icon-144x144.png')}}">
     <meta name="theme-color" content="#000000">
+    <script defer="defer" src="{{ url_for('static', filename='js/jquery-2.1.1.min.js') }}"></script>
+        <script defer="defer" src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
+	    <script defer="defer" src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+	    <script defer="defer" src="{{ url_for('static', filename='js/main.js') }}"></script>
+	    <script defer="defer" src="{{ url_for('static', filename='js/rellax.js') }}"></script>
       {# Import all variables for descriptions, titles, etc. #}
 </head>
 <body class="white">
@@ -44,7 +50,7 @@
   #}
     <div class="home">
         <img class="forced-center" src="{{ url_for('static', filename='assets/hctransparent.png') }}" height="120">
-        <h1 class="center" id="header-text">Hypercharged</h1>
+        <h1 class="center wow bounceInUp" id="header-text">Hypercharged</h1>
         <ul class="pages center list-inline">
             <li class="page"><a class="black-text" href="{{ url_for('home') }}">Home</a></li>
             <li class="page"><a class="black-text" href="{{ url_for('about') }}">About</a></li>
@@ -56,9 +62,5 @@
     {% extends "footer.html" %}
 </body>
 {# Load JS last for optimized load time #}
-	 <script defer="defer" src="{{ url_for('static', filename='js/jquery-2.1.1.min.js') }}"></script>
-	 <script defer="defer" src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
-	 <script defer="defer" src="{{ url_for('static', filename='js/main.js') }}"></script>
-	  <script defer="defer" src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
-	  <script defer="defer" src="{{ url_for('static', filename='js/rellax.js') }}"></script>
+
 </html>
