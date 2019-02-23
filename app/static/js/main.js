@@ -13,7 +13,7 @@ $(document).ready(function(){
     new WOW().init();
   });
 $(".switch").find("input[type=checkbox]").on("change",function() {
-    var status = $(this).prop('checked');
+    let status = $(this).prop('checked');
     $.removeCookie("nightMode");
     $.cookie("nightMode", status, {
         expires: 365*20,
