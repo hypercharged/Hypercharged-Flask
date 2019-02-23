@@ -1,9 +1,9 @@
 var isPreserved = false;
 $(document).ready(function(){
     try {
-        if (document.cookie.split("mode=")[1] == "true" || document.cookie.split("mode=")[1] == "false") {
+        if ($.cookie("nightMode") != null) {
             isPreserved = true;
-            toggleMode(document.cookie.split("mode=")[1]=="true");
+            toggleMode($.cookie("nightMode"));
         }
     }
     catch {
@@ -14,7 +14,11 @@ $(document).ready(function(){
   });
 $(".switch").find("input[type=checkbox]").on("change",function() {
     var status = $(this).prop('checked');
-    document.cookie = "mode="+status;
+    $.removeCookie("nightMode");
+    $.cookie("nightMode", status, {
+        expires: 365*20,
+        path: '/'
+    });
     toggleMode(status);
 });
 function toggleMode(status) {

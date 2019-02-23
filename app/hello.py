@@ -89,8 +89,8 @@ try:
     publish = pick["PUBLISHABLE_KEY"]
     secret = pick["SECRET_KEY"]
 except FileNotFoundError:
-    secret = input("SECRET KEY: ")
-    publish = input("PUBLISHABLE KEY: ")
+    secret = os.environ.get("PUBLISH")
+    publish = os.environ.get("SECRET")
 pickle.dump({
     "PUBLISHABLE_KEY": publish,
     "SECRET_KEY": secret
@@ -176,7 +176,6 @@ def home():
     images = os.listdir(os.path.join(app.static_folder, "assets"))
     metadata = retrieveMetaData()
     for image in images:
-        print(image, "IMG" not in image)
         if "IMG" not in image:
             images.remove(image)
     try:
