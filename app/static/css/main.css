@@ -95,4 +95,7 @@ tr {
   -webkit-text-fill-color: transparent;
 }
 #about-paragraph {font-family: 'Montserrat';}
+.normal-text {
+	font-family: 'Montserrat' !important;
+}
 #about-header {font-size: 36pt !important;}

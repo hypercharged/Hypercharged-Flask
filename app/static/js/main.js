@@ -5,13 +5,19 @@ $(document).ready(function(){
             isPreserved = true;
             toggleMode();
         }
-    }
-    catch {
-
-    }
+    } catch {}
+    $('.collapsible').collapsible();
     $('.modal').modal();
+    if ($.cookie("cookie") == null) {
+        $('#cookies').modal({dismissible: false});
+        $('#cookies').modal('open');
+    }
+
     new WOW().init();
   });
+$('#cookies-agree').on("click", function () {
+    $.cookie("cookie","true", {expires: 365*20});
+});
 $(".switch").find("input[type=checkbox]").on("change",function() {
     let status = $(this).prop('checked');
     $.removeCookie("nightMode");
