@@ -3,7 +3,7 @@ $(document).ready(function(){
     try {
         if ($.cookie("nightMode") != null) {
             isPreserved = true;
-            toggleMode($.cookie("nightMode"));
+            toggleMode();
         }
     }
     catch {
@@ -19,10 +19,11 @@ $(".switch").find("input[type=checkbox]").on("change",function() {
         expires: 365*20,
         path: '/'
     });
-    toggleMode(status);
+    toggleMode();
+    $(this).prop('checked', $.cookie("nightMode").toLocaleString().localeCompare("false"));
 });
-function toggleMode(status) {
-    if (status) {
+function toggleMode() {
+    if ($.cookie("nightMode").toLocaleString().localeCompare("false")) {
         $('body').removeClass("white");
         $('body').addClass("black");
         $(".black-text").addClass("white-text");
@@ -41,5 +42,5 @@ function toggleMode(status) {
         $(".lever").removeClass("red");
 
     }
-    $('.switch').prop('checked', true);
+
   }

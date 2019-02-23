@@ -12,7 +12,13 @@
 .switch label input[type=checkbox]:checked+.lever:after {
 	background: white;
 }
-
+#sign-in {
+	margin: 10px !important;
+}
+#sign-in-button {
+	border-radius: 6px 0;
+	width: max-content !important;
+}
 tr {
 	border-bottom: none;
 }
