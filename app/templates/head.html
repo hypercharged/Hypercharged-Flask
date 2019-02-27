@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/materialize.min.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
-	<link href="{{ url_for('static', filename='css/animate.css') }}" rel="stylesheet" />
-	<link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="{{ url_for('static', filename='css/materialize.min.css') }}" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="{{ url_for('static', filename='css/animate.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hypercharged | {{name}}</title>
-    <link ref="favicon"href="{{ url_for('static', filename='assets/favicon/favicon.ico') }}">
+    <link ref="favicon" href="{{ url_for('static', filename='assets/favicon/favicon.ico') }}">
     <link rel="apple-touch-icon" sizes="57x57" href="{{ url_for('static', filename='assets/favicon/apple-icon-57x57.png')}}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{ url_for('static', filename='assets/favicon/apple-icon-60x60.png')}}">
     <link rel="apple-touch-icon" sizes="72x72" href="{{url_for('static', filename='assets/favicon/apple-icon-72x72.png')}}">
@@ -19,76 +20,77 @@
     <link rel="apple-touch-icon" sizes="144x144" href="{{url_for('static', filename='assets/favicon/apple-icon-144x144.png')}}">
     <link rel="apple-touch-icon" sizes="152x152" href="{{url_for('static', filename='assets/favicon/apple-icon-152x152.png')}}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static', filename='assets/favicon/apple-icon-180x180.png')}}">
-    <link rel="icon" type="image/png" sizes="192x192"  href="{{url_for('static', filename='assets/favicon/android-icon-192x192.png')}}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{url_for('static', filename='assets/favicon/android-icon-192x192.png')}}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='assets/favicon/favicon-32x32.png')}}">
     <link rel="icon" type="image/png" sizes="96x96" href="{{url_for('static', filename='assets/favicon/favicon-96x96.png')}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static', filename='assets/favicon/favicon-16x16.png')}}">
-    <link rel="manifest" href="assets/favicon/manifest.json">
+    <link rel="manifest" href="{{url_for('static', filename='assets/favicon/manifest.json')}}">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{{url_for('static', filename='assets/favicon/ms-icon-144x144.png')}}">
     <meta name="theme-color" content="#000000">
     <script defer="defer" src="{{ url_for('static', filename='js/jquery-2.1.1.min.js') }}"></script>
     <script defer="defer" src="{{ url_for('static', filename='js/jquery.cookie.js') }}"></script>
-        <script defer="defer" src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
-	    <script defer="defer" src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
-	    <script defer="defer" src="{{ url_for('static', filename='js/main.js') }}"></script>
-	    <script defer="defer" src="{{ url_for('static', filename='js/rellax.js') }}"></script>
-      {# Import all variables for descriptions, titles, etc. #}
+    <script defer="defer" src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
+    <script defer="defer" src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+    <script defer="defer" src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script defer="defer" src="{{ url_for('static', filename='js/rellax.js') }}"></script>
+    {# Import all variables for descriptions, titles, etc. #}
 </head>
+
 <body class="white">
     {#
-	<nav>
-    <div class="nav-wrapper black">
-      <img src="{{url_for('static', filename='assets/hctransparent.png') }}" href="#" height="60" class="brand-logo"></img>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Wallpapers</a></li>
-        <li><a href="badges.html">Shop</a></li>
-        <li><a href="collapsible.html">About</a></li>
-      </ul>
-    </div>
-  </nav>
-  #}
+    <nav>
+        <div class="nav-wrapper black">
+            <img src="{{url_for('static', filename='assets/hctransparent.png') }}" href="#" height="60" class="brand-logo"></img>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="sass.html">Wallpapers</a></li>
+                <li><a href="badges.html">Shop</a></li>
+                <li><a href="collapsible.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+    #}
     <div id="cookies" class="modal">
         <div class="modal-content">
-          <h4 class="normal-text">We Use Cookies</h4>
-          <p class="normal-text">And luckily for us, people like to eat cookies. So there you go. </p>
+            <h4 class="normal-text">We Use Cookies</h4>
+            <p class="normal-text">And luckily for us, people like to eat cookies. So there you go. </p>
             <ul class="collapsible">
                 <li>
                     <div class="collapsible-header normal-text">More Info (+)</div>
-                    <div class="collapsible-body"><p class="normal-text">
-                       This cookie is used to remember a user’s choice about cookies on Hypercharged's site. Where users have previously indicated a preference, that user’s preference will be stored in this cookie (things like dark mode).
-                    </p></div>
+                    <div class="collapsible-body">
+                        <p class="normal-text">
+                            This cookie is used to remember a user’s choice about cookies on Hypercharged's site. Where users have previously indicated a preference, that user’s preference will be stored in this cookie (things like dark mode).
+                        </p>
+                    </div>
                 </li>
             </ul>
         </div>
         <div class="modal-footer">
-          <a href="#!" class="normal-text modal-close waves-effect waves-green btn-flat"id="cookies-agree">I Agree To Cookie Usage</a>
+            <a class="normal-text modal-close waves-effect waves-green btn-flat" href="#!" id="cookies-agree">I Agree To Cookie Usage</a>
         </div>
     </div>
     <div id="sign-in-button" class="black">
         <i class="fas fa-sign-in-alt" style="color: white;" id="sign-in"></i>
     </div>
     <div class="home">
-        <img class="forced-center" id="logo" src="{{ url_for('static', filename='assets/hctransparent.png') }}" height="120">
+        <img class="forced-center" id="logo" src="{{ url_for('static', filename='assets/hctransparent.png') }}" height="120" alt="Logo">
         <h1 class="center wow bounceInUp" id="header-text">Hypercharged</h1>
         <ul class="pages center list-inline">
             <li class="page"><a class="black-text" href="{{ url_for('home') }}">Home</a></li>
             <li class="page"><a class="black-text" href="{{ url_for('about') }}">About</a></li>
             <li class="page"><a class="black-text" href="{{ url_for('home') }}">Contact</a></li>
-            <li><div class="switch forced-center" id="dark-mode-toggle">
-            <label>
-                <span class="black-text">Dark Mode</span>
-              <input type="checkbox">
-              <span class="lever blue"></span>
-            </label>
-          </div>
+            <li>
+                <div class="switch forced-center" id="dark-mode-toggle">
+                    <label>
+                        <span class="black-text">Dark Mode</span>
+                        <input type="checkbox">
+                        <span class="lever blue"></span>
+                    </label>
+                </div>
             </li>
         </ul>
-        {% block content %}
-              {% endblock %}
+        {% block content %} {% endblock %}
     </div>
-    {% extends "footer.html" %}
+    {% include "footer.html" %}
 </body>
-{# Load JS last for optimized load time #}
-
 </html>

@@ -208,7 +208,7 @@ def home():
 
 @app.route('/about')
 def about():
-    return render_template('about.html', name="About")
+    return render_template('about.html', name="About", year=datetime.datetime.now().year)
 
 @app.route('/favicon.ico')
 def favicon():
