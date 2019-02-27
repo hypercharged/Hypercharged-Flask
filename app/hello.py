@@ -10,6 +10,7 @@ import enum
 import flask
 from flask import render_template
 import flask_sitemap
+from flask_mail import Message, Mail
 import flask_socketio
 #
 #   Shop Classes/Libraries
@@ -22,6 +23,10 @@ import wtforms
 #
 #   GitIgnore'd
 #
+
+app = flask.Flask(__name__)
+mail = Mail(app)
+
 try:
     from .DBDetails import *
 except ModuleNotFoundError as e:
@@ -29,6 +34,21 @@ except ModuleNotFoundError as e:
 
 
 #   Class declaration for Heroku since it's lazy AF
+
+class ContactForm():
+    def setInfo(self, **kwargs):
+        for key, value in kwargs.items():
+            self.key = value
+
+    def __init__(self, message, sender, recipient):
+        self.setInfo(message=message, sender=sender, recipient=recipient)
+        msg = Message()
+        msg.recipients = [self.recipient]
+        msg.body = message
+        msg.sender = "{} <{}>".format("Customer", self.sender)
+        mail.send(msg)
+
+
 
 class Prices(enum.Enum):
     ITEM_1 = 1.00
@@ -67,7 +87,6 @@ class Wallpaper:
         self.request_token = ''.join(random.choices(string.ascii_letters + string.digits, k=16))
 
 
-app = flask.Flask(__name__)
 smp = flask_sitemap.Sitemap(app=app)
 PICKLE_FILE = "keypair.hypercharged"
 carEvents = []
