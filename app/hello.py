@@ -35,13 +35,15 @@ except ModuleNotFoundError as e:
 
 #   Class declaration for Heroku since it's lazy AF
 
-class ContactForm():
-    def setInfo(self, **kwargs):
+class ContactForm:
+    recipient = "hyperchargedvideos@gmail.com"
+
+    def set_info(self, **kwargs):
         for key, value in kwargs.items():
             self.key = value
 
     def __init__(self, message, sender, recipient):
-        self.setInfo(message=message, sender=sender, recipient=recipient)
+        self.set_info(message=message, sender=sender, recipient=recipient)
         msg = Message()
         msg.recipients = [self.recipient]
         msg.body = message
@@ -71,8 +73,8 @@ class UserLogin:
         except Exception:
             try:
                 self.user = self.auth.create_user_with_email_and_password(email, password)
-            except Exception as e:
-                print(e)
+            except Exception as e2:
+                print(e2)
 
 
 class Wallpaper:
@@ -138,8 +140,8 @@ def login_activity(email, password):
     user = UserLogin(email=email, password=password, cfg=firebase)
     try:
         flask.session["user"] = user.auth.get_account_info(user.user["idToken"])["users"]
-    except Exception as e:
-        print(e)
+    except Exception as e3:
+        print(e3)
 
 
 def LogoutActivity():
@@ -200,15 +202,17 @@ def home():
     try:
         images.remove("hctransparentdark.png")
         images.remove("favicon")
-    except:
-        print("Favicon not removed")
+    except Exception as e4:
+        print(e4)
     now = datetime.datetime.now().year
     return flask.render_template('home.html', name="Home", description=settings["Home"]["description"], images=images,
                                  metadata=metadata, year=now)
 
+
 @app.route('/about')
 def about():
     return render_template('about.html', name="About", year=datetime.datetime.now().year)
+
 
 @app.route('/favicon.ico')
 def favicon():
@@ -218,8 +222,11 @@ def favicon():
 
 @app.route('/buy')
 def buy():
-    return render_template('buy.html', name="Buy", description=settings["Home"]["description"],
-                                 key=stripe_keys["publishable_key"])
+    return render_template(
+        'buy.html', name="Buy",
+        description=settings["Home"]["description"],
+        key=stripe_keys["publishable_key"]
+    )
 
 
 @app.route('/charge', methods=['POST'])

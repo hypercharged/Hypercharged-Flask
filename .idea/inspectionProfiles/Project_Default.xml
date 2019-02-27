@@ -6,6 +6,7 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="app.hello.DBDetails" />
+          <option value="app.hello.ContactForm.*" />
         </list>
       </option>
     </inspection_tool>
