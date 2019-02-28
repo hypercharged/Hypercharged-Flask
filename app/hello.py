@@ -8,7 +8,7 @@ import string
 import stripe
 import enum
 import flask
-from flask import render_template
+from flask import render_template, make_response
 import flask_sitemap
 from flask_mail import Message, Mail
 import flask_socketio
@@ -21,16 +21,11 @@ import flask_socketio
 import wtforms
 
 #
-#   GitIgnore'd
+#   GitIgnored
 #
 
 app = flask.Flask(__name__)
 mail = Mail(app)
-
-try:
-    from .DBDetails import *
-except ModuleNotFoundError as e:
-    print()
 
 
 #   Class declaration for Heroku since it's lazy AF
@@ -124,27 +119,17 @@ stripe.api_key = stripe_keys['secret_key']
 app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS'] = True
 app.config['SECRET_KEY'] = secret  # Temporary ---> SOCKET IO KEY same as STRIPE KEYs
 
-
+"""
 def login_activity(email, password):
-    if os.environ.get("apiKey") is None:
-        firebase = Config(Settings.settings)
-    else:
-        firebase = Config({
-            "apiKey": os.environ.get("apiKey"),
-            "authDomain": os.environ.get("authDomain"),
-            "databaseURL": os.environ.get("databaseURL"),
-            "projectId": os.environ.get("projectId"),
-            "storageBucket": os.environ.get("storageBucket"),
-            "messagingSenderId": os.environ.get("messagingSenderId")
-        })
     user = UserLogin(email=email, password=password, cfg=firebase)
+    user = user.auth.refresh(user['refreshToken'])
     try:
-        flask.session["user"] = user.auth.get_account_info(user.user["idToken"])["users"]
+        return user
     except Exception as e3:
         print(e3)
+"""
 
-
-def LogoutActivity():
+def logout_activity():
     flask.session.pop("user", None)
 
 
@@ -152,7 +137,6 @@ def retrieveMetaData():
     with open('app/config.json') as f:
         file = json.loads(f.read())
         return file
-
 
 # noinspection PyTypeChecker
 def getImagesCarEvents():
@@ -186,9 +170,27 @@ class LoginForm(wtforms.Form):
 def register():
     form = LoginForm(flask.request.form)
     if flask.request.method == 'POST' and form.validate() and (flask.session.get("user") is None):
-        login_activity(form.email.data, form.password.data)
         flask.flash('Thanks for registering')
-        return flask.redirect('/')
+        response = make_response(flask.redirect('/'))
+        try:
+            conf = {
+                "apiKey": os.environ.get("apiKey"),
+                "authDomain": os.environ.get("authDomain"),
+                "databaseURL": os.environ.get("databaseURL"),
+                "projectId": os.environ.get("projectId"),
+                "storageBucket": os.environ.get("storageBucket"),
+                "messagingSenderId": os.environ.get("messagingSenderId")
+            }
+            firebase = pyrebase.initialize_app(conf)
+            auth = firebase.auth()
+            user = auth.sign_in_with_email_and_password(form.email.data, form.password.data)
+            user = auth.refresh(user['refreshToken'])
+            print(user.auth.get_account_info()[user["idToken"]])
+            response.set_cookie("login", user.auth.get_account_info()[user["idToken"]])
+        except Exception as err:
+            response.set_cookie("login", "")
+            print(err)
+        return response
     return flask.render_template('login.html', form=form, name="Login")
 
 
