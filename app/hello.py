@@ -27,7 +27,6 @@ import wtforms
 app = flask.Flask(__name__)
 mail = Mail(app)
 
-
 #   Class declaration for Heroku since it's lazy AF
 
 class ContactForm:
