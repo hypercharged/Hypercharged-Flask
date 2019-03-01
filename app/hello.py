@@ -133,9 +133,14 @@ def logout_activity():
 
 
 def retrieveMetaData():
-    with open('app/config.json') as f:
-        file = json.loads(f.read())
-        return file
+    try:
+        with open('config.json') as f:
+            file = json.loads(f.read())
+            return file
+    except FileNotFoundError as e:
+        with open('app/config.json') as f:
+            file = json.loads(f.read())
+            return file
 
 # noinspection PyTypeChecker
 def getImagesCarEvents():
