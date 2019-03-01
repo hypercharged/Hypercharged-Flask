@@ -161,7 +161,7 @@ def add_images(list):
     try:
         update_data("config.json", list)
     except Exception as err:
-        update_data("app/config.json")
+        update_data("app/config.json", list)
 
 
 def update_data(url, list):
