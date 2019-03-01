@@ -4,7 +4,7 @@ images_path = "raw_assets/"
 logo = Image.open("static/assets/hctransparentdark.png")
 logo = logo.resize((1000, 1000), Image.ANTIALIAS)
 for image in os.listdir(images_path):
-    if "hctransparent" not in image and "favicon" not in image:
+    if "hctransparent" not in image and "favicon" not in image and ".DS_Store" not in image:
         raw = Image.open(images_path + image)
         w, h = raw.size
         w1, h1 = logo.size
