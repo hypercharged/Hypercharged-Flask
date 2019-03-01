@@ -45,7 +45,6 @@ class ContactForm:
         mail.send(msg)
 
 
-
 class Prices(enum.Enum):
     ITEM_1 = 1.00
     ITEM_2 = 1.50
@@ -128,6 +127,11 @@ def login_activity(email, password):
         print(e3)
 """
 
+
+def user_agent():
+    return flask.request.headers.get('User-Agent')
+
+
 def logout_activity():
     flask.session.pop("user", None)
 
@@ -142,14 +146,34 @@ def retrieveMetaData():
             file = json.loads(f.read())
             return file
 
+
 # noinspection PyTypeChecker
 def getImagesCarEvents():
     with open('app/config.json') as f:
-        file = json.loads(f.read())
+        file = dict(json.loads(f.read()))
         for key, value in file:
             if value["event"] not in carEvents:
                 carEvents['events'].append(value["event"])
             carEvents['images'][value['event']].append(key)
+
+
+def add_images(list):
+    excluded = ["favicon", "hctransparent.png","hctransparentdark.png"]
+    file = dict
+    with open('config.json') as f:
+        file = json.load(f)
+    with open('config.json', 'w') as f:
+        for item in list:
+            if item not in excluded and item not in file.keys():
+                file.update({
+                    item: {
+                        "event": "",
+                        "car": ""
+                    }
+                })
+        json.dump(file, f)
+        f.close()
+
 
 
 class LoginForm(wtforms.Form):
@@ -165,12 +189,15 @@ class LoginForm(wtforms.Form):
 
     ], render_kw={'class': 'white-text'})
     confirm = wtforms.PasswordField('Repeat Password')
+
     """
     LOGIN FORM
     """
 
+
 def travis_ci():
-    return ((os.environ.get('TRAVIS_CI')) is not None)
+    return os.environ.get('TRAVIS_CI') is not None
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def register():
@@ -202,7 +229,9 @@ def register():
 
 @app.route('/')
 def home():
+    print(user_agent())
     images = os.listdir(os.path.join(app.static_folder, "assets"))
+    add_images(images)
     metadata = retrieveMetaData()
     for image in images:
         if "IMG" not in image:
@@ -220,6 +249,7 @@ def home():
 @app.route('/about')
 def about():
     return render_template('about.html', name="About", year=datetime.datetime.now().year)
+
 
 @app.route('/contact')
 def contact():
