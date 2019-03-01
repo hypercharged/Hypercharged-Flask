@@ -169,6 +169,8 @@ class LoginForm(wtforms.Form):
     LOGIN FORM
     """
 
+def travis_ci():
+    return ((os.environ.get('TRAVIS_CI')) is not None)
 
 @app.route('/login', methods=['GET', 'POST'])
 def register():
