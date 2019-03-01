@@ -1,15 +1,16 @@
 {% extends "head.html" %}
 {% block content %}
-		<div class="about">
-			<h1 align="center">About Us</h1>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<div class="about container black-text">
+			<h1 align="center" id="about-header">About Us</h1>
             <br>
             <br>
-            <img src="{{ url_for('static', filename='assets/IMG_8574-Edit-Edit.jpg') }}" class="center">
+            <img src="{{ url_for('static', filename='assets/IMG_8574-Edit-Edit.jpg') }}" alt="About" id="about-image" class="center">
             <br>
             <br>
-			<p align="center">Welcome to Hypercharged!</p>
+			<h3 align="center" id="about-title">Welcome to Hypercharged!</h3>
             <br>
-            <p align="center">Hypercharged was founded in January of 2017 by a bunch of highschool friends
+            <p align="center" id="about-paragraph">Hypercharged was founded in January of 2017 by a bunch of highschool friends
             focusing on something they all loved: cars. The group first began with YouTube videos about car meets they
             attended which can still be found today on YouTube (linked below). But eventually, they expanded to Instagram
             as well. On Instagram they began posting screenshots from videos to gain more traffic to their videos
