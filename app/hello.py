@@ -262,4 +262,5 @@ def charge():
 
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    if not travis_ci():
+        socketio.run(app, debug=True)
