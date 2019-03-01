@@ -214,6 +214,9 @@ def home():
 def about():
     return render_template('about.html', name="About", year=datetime.datetime.now().year)
 
+@app.route('/contact')
+def about():
+    return render_template('contact.html', name="Contact", year=datetime.datetime.now().year)
 
 @app.route('/favicon.ico')
 def favicon():
