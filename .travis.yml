@@ -7,4 +7,4 @@ install:
   - pip install -r requirements.txt
 
 script:
-  - python app.hello
+  - python app/hello.py
