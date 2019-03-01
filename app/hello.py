@@ -158,9 +158,16 @@ def getImagesCarEvents():
 
 
 def add_images(list):
-    excluded = ["favicon", "hctransparent.png","hctransparentdark.png"]
+    try:
+        update_data("config.json", list)
+    except Exception as err:
+        update_data("app/config.json")
+
+
+def update_data(url, list):
+    excluded = ["favicon", "hctransparent.png", "hctransparentdark.png"]
     file = dict
-    with open('config.json') as f:
+    with open(url) as f:
         file = json.load(f)
     with open('config.json', 'w') as f:
         for item in list:
@@ -173,7 +180,6 @@ def add_images(list):
                 })
         json.dump(file, f)
         f.close()
-
 
 
 class LoginForm(wtforms.Form):
