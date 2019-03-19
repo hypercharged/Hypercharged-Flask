@@ -12,22 +12,20 @@ from flask import render_template, make_response
 import flask_sitemap
 from flask_mail import Message, Mail
 import flask_socketio
-#
-#   Shop Classes/Libraries
-#
-#
-#   Firebase Python Classes
-#
 import wtforms
 
-#
-#   GitIgnored
-#
 
 app = flask.Flask(__name__)
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'hyperchargedvideos@gmail.com'
+app.config['MAIL_PASSWORD'] = os.environ.get("MAIL_PASSWORD")
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
 
 #   Class declaration for Heroku since it's lazy AF
+
 
 class ContactForm:
     recipient = "hyperchargedvideos@gmail.com"
@@ -160,7 +158,7 @@ def getImagesCarEvents():
 def add_images(list):
     try:
         update_data("config.json", list)
-    except Exception as err:
+    except Exception:
         update_data("app/config.json", list)
 
 
