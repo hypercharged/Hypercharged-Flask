@@ -1,5 +1,5 @@
  <p align="center">
-    <img src="https://github.com/hypercharged/Hypercharged-Flask/blob/deploy/hypercharged.svg"><br/>
+    <img src="https://github.com/hypercharged/Hypercharged-Flask/blob/deploy/hypercharged_md.png"><br/>
     Hypercharged - Official Site <br/>
     <img src="https://img.shields.io/badge/build-passing-brightgreen.svg">
     <img src="https://img.shields.io/badge/python-3.5%20%7C%203.6%20%7C%203.7-blue.svg">
