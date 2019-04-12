@@ -146,13 +146,15 @@ def retrieveMetaData():
 
 
 # noinspection PyTypeChecker
-def getImagesCarEvents():
-    with open('app/config.json') as f:
-        file = dict(json.loads(f.read()))
-        for key, value in file:
-            if value["event"] not in carEvents:
-                carEvents['events'].append(value["event"])
-            carEvents['images'][value['event']].append(key)
+def get_cars(event_name):
+     file = dict(retrieveMetaData())
+     carEvents = {}
+     images = []
+     for key, value in file.items():
+         if value["event"] == event_name:
+             carEvents[key] = value
+             images.append(key)
+     return [carEvents, images]
 
 
 def add_images(list):
@@ -230,6 +232,11 @@ def register():
         return response
     return flask.render_template('login.html', form=form, name="Login")
 
+@app.route('/events/<event_name>')
+def events(event_name):
+    event_name = event_name.replace("%20"," ")
+    filter = get_cars(event_name)
+    return render_template("home.html", event_name=event_name, metadata=filter[0], images=filter[1], name=event_name.upper(), description=settings["Home"]["description"])
 
 @app.route('/')
 def home():

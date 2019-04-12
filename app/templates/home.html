@@ -4,44 +4,34 @@
     {% for image in images %} {% if image != "hctransparent.png" and image != "hctransparentdark.png" and image != "favicon" %} {% if loop.index == 1 %}
     <tr>
         <td>
-            <a href="#modal{{loop.index0}}" class="modal-trigger">
-                <img alt="Loading..." src="{{ url_for('static', filename='assets/' + image) }}" class="full-width z-depth-4 wow slideInLeft" />
+            <a href="{{ url_for('events', event_name = metadata[image]["event"])}}" class="modal-trigger">
+                <img alt="Loading..." src="{{ url_for('static', filename='assets/' + image) }}" class="full-width z-depth-4 wow fadeInUp" />
             </a>
         </td>
         {% elif (loop.index0) % 2 == 0 %}
     </tr>
     <tr>
         <td>
-            <a href="#modal{{loop.index0}}" class="modal-trigger">
-                <img alt="Loading..." src="{{ url_for('static', filename='assets/' + image) }}" class="full-width z-depth-4 wow slideInLeft" />
+            <a href="{{ url_for('events', event_name = metadata[image]["event"])}}" class="modal-trigger">
+                <img alt="Loading..." src="{{ url_for('static', filename='assets/' + image) }}" class="full-width z-depth-4 wow fadeInUp" />
             </a>
         </td>
         {% else %}
         <td>
-            <a href="#modal{{loop.index0}}" class="modal-trigger">
-                <img alt="Loading..." src="{{ url_for('static', filename='assets/' + image) }}" class="full-width z-depth-4 wow slideInRight" />
+            <a href="{{ url_for('events', event_name = metadata[image]["event"])}}" class="modal-trigger">
+                <img alt="Loading..." src="{{ url_for('static', filename='assets/' + image) }}" class="full-width z-depth-4 wow fadeInUp" />
             </a>
         </td>
         {% endif %}
 
-        <div class="modal black big-round" id="modal{{loop.index0}}">
-            <div class="modal-content">
-                <img src="{{ url_for('static', filename='assets/' + image) }}" class="modal-image big-round" alt="Loading..."/>
-            </div>
-            <div class="modal-footer black">
 
-                {% if metadata[image]["event"] != "N/A" and metadata[image]["event"] != ""%}
-                <h5 class="white-text left"><a><i class="fab fa-instagram pink-text big-icon"></i></a>{{metadata[image]["car"]}}<br>{{metadata[image]["event"]}}</h5> {% else %}
-                <h5 class="white-text left"><a><i class="fab fa-instagram pink-text big-icon"></i></a> {{metadata[image]["car"]}} In The Wild</h5> {% endif %}
-            </div>
-
-        </div>
         {% endif %} {% endfor %}
 </table>
 <table class="image-container hide-on-med-and-up">
     {% for image in images %} {% if image != "hctransparent.png"%}
     <tr>
-        <td><img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width" alt="Loading..."/>
+        <td>
+            <a href="{{ url_for('events', event_name = metadata[image]["event"])}}"><img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width" alt="Loading..."/></a>
         </td>
     </tr>
     {% endif %} {% endfor %}
