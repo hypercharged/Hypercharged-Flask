@@ -26,7 +26,7 @@
 
     #}
 <table class="image-container hide-on-med-and-up">
-    {% for image in images %} {% if image != "hctransparent.png"%}
+    {% for image in images %} {% if image not in ("hctransparent.png","hctransparentdark.png","favicon", "fonts") %}
     {{ card(image=image, metadata=metadata, mobile=True) }}
     {% endif %} {% endfor %}
 </table>
