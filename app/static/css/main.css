@@ -2,6 +2,29 @@
 	border-radius: 20px;
 	margin: 50px auto !important;
 }
+/*
+	For the following rainbow animation, props to https://codepen.io/nohoid/pen/kIfto
+ */
+@-webkit-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@-moz-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@-o-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
 .full-width {
 	width: 100%;
 	//	border-radius: 10px;
@@ -40,7 +63,7 @@ tr {
 	transform: translateY(-10%) !important;
 }
 * {
-	font-family: "Major Mono Display";
+	font-family: "UltraHeavy";
 }
 .modal-footer {
 	text-align: left !important;
@@ -91,6 +114,12 @@ tr {
 }
 #header-text {
 	background: -webkit-linear-gradient(#feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+	background-size: 1800% 1800%;
+
+	-webkit-animation: rainbow 18s ease infinite;
+	-z-animation: rainbow 18s ease infinite;
+	-o-animation: rainbow 18s ease infinite;
+	  animation: rainbow 18s ease infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
