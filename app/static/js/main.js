@@ -1,5 +1,6 @@
 var isPreserved = false;
 $(document).ready(function(){
+    $('.sidenav').sidenav();
     try {
         if ($.cookie("nightMode") != null) {
             isPreserved = true;

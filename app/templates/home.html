@@ -1,39 +1,33 @@
-{% extends "head.html" %} {% block content %}
+{% extends "partials/head.html" %} {# Default head template #}
+{% from "partials/_card.html" import card with context %} {# Default card template #}
+{% block content %}
+{#
 
+    Table for Desktop Client
+
+#}
+    {% if event_name %}
+        <h3 class="center">{{ event_name }}</h3>
+    {% endif %}
 <table class="image-container hide-on-small-only">
-    {% for image in images %} {% if image != "hctransparent.png" and image != "hctransparentdark.png" and image != "favicon" %} {% if loop.index == 1 %}
-    <tr>
-        <td>
-            <a href="{{ url_for('events', event_name = metadata[image]["event"])}}" class="modal-trigger">
-                <img alt="Loading..." src="{{ url_for('static', filename='assets/' + image) }}" class="full-width z-depth-4 wow fadeInUp" />
-            </a>
-        </td>
-        {% elif (loop.index0) % 2 == 0 %}
-    </tr>
-    <tr>
-        <td>
-            <a href="{{ url_for('events', event_name = metadata[image]["event"])}}" class="modal-trigger">
-                <img alt="Loading..." src="{{ url_for('static', filename='assets/' + image) }}" class="full-width z-depth-4 wow fadeInUp" />
-            </a>
-        </td>
-        {% else %}
-        <td>
-            <a href="{{ url_for('events', event_name = metadata[image]["event"])}}" class="modal-trigger">
-                <img alt="Loading..." src="{{ url_for('static', filename='assets/' + image) }}" class="full-width z-depth-4 wow fadeInUp" />
-            </a>
-        </td>
+    {% for image in images %}
+        {% if image not in ("hctransparent.png","hctransparentdark.png","favicon")  %} {# If not excluded #}
+            {% if loop.index == 1 %}
+            <tr> {# Start Table #}
+            {% elif (loop.index0) % 2 == 0 %} </tr> <tr> {# Start new Table Row if left table cell #}
+            {% endif %}
+            {{ card(image=image, metadata=metadata, mobile=False) }} {# Default (right table cell) #}
         {% endif %}
-
-
-        {% endif %} {% endfor %}
+    {% endfor %}
 </table>
+    {#
+
+        Table for Mobile Client
+
+    #}
 <table class="image-container hide-on-med-and-up">
     {% for image in images %} {% if image != "hctransparent.png"%}
-    <tr>
-        <td>
-            <a href="{{ url_for('events', event_name = metadata[image]["event"])}}"><img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width" alt="Loading..."/></a>
-        </td>
-    </tr>
+    {{ card(image=image, metadata=metadata, mobile=True) }}
     {% endif %} {% endfor %}
 </table>
 

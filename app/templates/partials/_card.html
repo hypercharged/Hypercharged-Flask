@@ -1,0 +1,15 @@
+{% macro card(metadata, image, mobile) %}
+    {% if mobile %}
+    <tr>
+        <td>
+            <a href="{{ url_for('events', event_name = metadata[image]["event"])}}"><img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width" alt="Loading..."/></a>
+        </td>
+    </tr>
+    {% else %}
+        <td>
+            <a href="{{ url_for('events', event_name = metadata[image]["event"])}}" class="modal-trigger">
+                <img alt="Loading..." src="{{ url_for('static', filename='assets/' + image) }}" class="full-width z-depth-4 wow fadeInUp" />
+            </a>
+        </td>
+    {% endif %}
+{% endmacro %}

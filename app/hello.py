@@ -134,12 +134,12 @@ def logout_activity():
     flask.session.pop("user", None)
 
 
-def retrieveMetaData():
+def retrieve_json():
     try:
         with open('config.json') as f:
             file = json.loads(f.read())
             return file
-    except FileNotFoundError as e:
+    except FileNotFoundError:
         with open('app/config.json') as f:
             file = json.loads(f.read())
             return file
@@ -147,26 +147,25 @@ def retrieveMetaData():
 
 # noinspection PyTypeChecker
 def get_cars(event_name):
-     file = dict(retrieveMetaData())
-     carEvents = {}
-     images = []
+     file = dict(retrieve_json())
+     events = {}
+     images_events = []
      for key, value in file.items():
          if value["event"] == event_name:
-             carEvents[key] = value
-             images.append(key)
-     return [carEvents, images]
+             events[key] = value
+             images_events.append(key)
+     return [events, images_events]
 
 
-def add_images(list):
+def add_images(ls):
     try:
-        update_data("config.json", list)
+        update_data("config.json", ls)
     except Exception:
-        update_data("app/config.json", list)
+        update_data("app/config.json", ls)
 
 
 def update_data(url, list):
     excluded = ["favicon", "hctransparent.png", "hctransparentdark.png"]
-    file = dict
     with open(url) as f:
         file = json.load(f)
     with open('config.json', 'w') as f:
@@ -230,20 +229,22 @@ def register():
             response.set_cookie("login", "")
             print(err)
         return response
-    return flask.render_template('login.html', form=form, name="Login")
+    return render_template('login.html', form=form, name="Login")
+
 
 @app.route('/events/<event_name>')
 def events(event_name):
-    event_name = event_name.replace("%20"," ")
-    filter = get_cars(event_name)
-    return render_template("home.html", event_name=event_name, metadata=filter[0], images=filter[1], name=event_name.upper(), description=settings["Home"]["description"])
+    event_name = event_name.replace("%20", " ")  # URL's convert spaces to %20, so this reverses that
+    event_filter = get_cars(event_name)  # Finds all json items with event_name == event_name in URL
+    return render_template("home.html", event_name=event_name, metadata=event_filter[0], year=datetime.datetime.now().year, images=event_filter[1], name=event_name.upper(), description=settings["Home"]["description"])
+
 
 @app.route('/')
 def home():
     print(user_agent())
     images = os.listdir(os.path.join(app.static_folder, "assets"))
     add_images(images)
-    metadata = retrieveMetaData()
+    metadata = retrieve_json()
     for image in images:
         if "IMG" not in image:
             images.remove(image)
@@ -252,9 +253,8 @@ def home():
         images.remove("favicon")
     except Exception as e4:
         print(e4)
-    now = datetime.datetime.now().year
-    return flask.render_template('home.html', name="Home", description=settings["Home"]["description"], images=images,
-                                 metadata=metadata, year=now)
+    return render_template('home.html', name="Home", description=settings["Home"]["description"], images=images,
+                                 metadata=metadata, year=datetime.datetime.now().year)
 
 
 @app.route('/about')
@@ -265,11 +265,6 @@ def about():
 @app.route('/contact')
 def contact():
     return render_template('contact.html', name="Contact", year=datetime.datetime.now().year)
-
-@app.route('/favicon.ico')
-def favicon():
-    return flask.send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico',
-                                     mimetype='image/vnd.hypercharged.icon')
 
 
 @app.route('/buy')
@@ -306,5 +301,5 @@ def charge():
 
 
 if __name__ == '__main__':
-    if not travis_ci():
+    if not travis_ci():  # Checks for Travis testbed
         socketio.run(app, debug=True)

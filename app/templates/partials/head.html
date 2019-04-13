@@ -69,10 +69,11 @@
             <a class="normal-text modal-close waves-effect waves-green btn-flat" href="#!" id="cookies-agree">I Agree To Cookie Usage</a>
         </div>
     </div>
-    <div id="sign-in-button" class="black">
+    {# <div id="sign-in-button" class="black">
         <i class="fas fa-sign-in-alt" style="color: white;" id="sign-in"></i>
-    </div>
+    </div>  #}
     <div class="home">
+        <div class="hide-on-small-only">
         <img class="forced-center" id="logo" src="{{ url_for('static', filename='assets/hctransparent.png') }}" height="120" alt="Logo">
         <h1 class="center wow bounceInUp" id="header-text">Hypercharged</h1>
         <ul class="pages center list-inline">
@@ -89,8 +90,34 @@
                 </div>
             </li>
         </ul>
+        </div>
+        <div class="hide-on-med-and-up">
+            <nav class="white"  style="height:100px;">
+            <div class="nav-wrapper">
+              <a href="/" class="brand-logo"><img class="forced-center" height="80" src="{{ url_for('static', filename='assets/hctransparent.png') }}" height="120" alt="Logo">
+            </a>
+              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
+            </div>
+          </nav>
+          <ul class="sidenav" id="mobile-demo">
+              <li class="page"><a class="black-text" href="{{ url_for('home') }}">Hypercharged</a></li>
+            <li class="page"><a class="black-text" href="{{ url_for('home') }}">Home</a></li>
+            <li class="page"><a class="black-text" href="{{ url_for('about') }}">About</a></li>
+            <li class="page"><a class="black-text" href="{{ url_for('home') }}">Contact</a></li>
+            <li class="page">
+                <div class="switch forced-center" id="dark-mode-toggle">
+                    <label>
+                        <input type="checkbox">
+                        <span class="lever blue"></span>
+                    </label>
+                    <span class="black-text">Dark Mode</span>
+
+                </div>
+            </li>
+          </ul>
+        </div>
         {% block content %} {% endblock %}
     </div>
-    {% include "footer.html" %}
+    {% include "partials/footer.html" %}
 </body>
 </html>
