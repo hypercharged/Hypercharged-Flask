@@ -63,7 +63,7 @@ tr {
 	transform: translateY(-10%) !important;
 }
 * {
-	font-family: "UltraHeavy";
+	font-family: "UltraHeavy", "Major Mono Display";
 }
 .modal-footer {
 	text-align: left !important;

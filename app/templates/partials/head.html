@@ -13,7 +13,7 @@
     <style>
     @font-face{
     font-family:"UltraHeavy";
-    src:url("{{ url_for('static',filename='assets/fonts/WHOOPASS.ttf') }}");
+    src:"{{ url_for('static',filename='assets/fonts/WHOOPASS.ttf') }}" format("truetype");
     }
     </style>
     <link ref="favicon" href="{{ url_for('static', filename='assets/favicon/favicon.ico') }}">
