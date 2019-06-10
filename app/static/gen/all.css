@@ -1,0 +1,226 @@
+@font-face {
+  src: url("../gen/Gilroy-ExtraBold.otf");
+  font-family: "Gilroy Bold";
+}
+/* line 5 */
+.content-container {
+  border-radius: 20px;
+  margin: 50px auto !important;
+}
+
+/*
+	For the following rainbow animation, props to https://codepen.io/nohoid/pen/kIfto
+ */
+@-webkit-keyframes rainbow {
+  0% {
+    background-position: 0% 82%;
+  }
+  50% {
+    background-position: 100% 19%;
+  }
+  100% {
+    background-position: 0% 82%;
+  }
+}
+@-moz-keyframes rainbow {
+  0% {
+    background-position: 0% 82%;
+  }
+  50% {
+    background-position: 100% 19%;
+  }
+  100% {
+    background-position: 0% 82%;
+  }
+}
+@-o-keyframes rainbow {
+  0% {
+    background-position: 0% 82%;
+  }
+  50% {
+    background-position: 100% 19%;
+  }
+  100% {
+    background-position: 0% 82%;
+  }
+}
+@keyframes rainbow {
+  0% {
+    background-position: 0% 82%;
+  }
+  50% {
+    background-position: 100% 19%;
+  }
+  100% {
+    background-position: 0% 82%;
+  }
+}
+/* line 32 */
+.full-width {
+  width: 100%;
+  object-fit: cover;
+  height: 300px !important;
+  transition: ease all 0.2s;
+}
+
+/* line 39 */
+.switch label input[type=checkbox]:checked + .lever:after {
+  background: white;
+}
+
+/* line 42 */
+#sign-in {
+  margin: 10px !important;
+}
+
+/* line 45 */
+#sign-in-button {
+  border-radius: 6px 0;
+  width: max-content !important;
+}
+
+/* line 49 */
+tr {
+  border-bottom: none;
+}
+
+/* line 53 */
+.image-row img {
+  box-shadow: 5px 5px 20px black;
+}
+
+/* line 57 */
+.forced-center {
+  margin: 0 auto !important;
+  display: block;
+}
+
+/* line 61 */
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 66 */
+#about-image {
+  width: 50%;
+}
+
+/* line 69 */
+.modal {
+  max-height: 100% !important;
+  border: 5px solid white;
+  transform: translateY(-10%) !important;
+}
+
+/* line 74 */
+* {
+  font-family: "Gilroy Bold", "Major Mono Display";
+}
+
+/* line 77 */
+.modal-footer {
+  text-align: left !important;
+}
+
+/* line 80 */
+.modal-content {
+  padding-bottom: 0px !important;
+}
+
+/* line 83 */
+.big-icon {
+  font-size: 25px;
+  margin-right: 20px;
+}
+
+/* line 87 */
+.big-round {
+  border-radius: 20px;
+}
+
+/* line 90 */
+.modal-image {
+  width: 80%;
+  margin-left: 10%;
+}
+
+/* line 94 */
+.image-container {
+  margin: 0 auto;
+  width: 80%;
+}
+
+/* line 98 */
+.full-width:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 650px) {
+  /* line 102 */
+  #about-image {
+    width: 100% !important;
+  }
+
+  /* line 105 */
+  #header-text {
+    font-size: 20pt;
+  }
+}
+/* line 109 */
+.list-inline {
+  padding-left: 0;
+  list-style: none;
+}
+
+/* line 113 */
+.list-inline > li {
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+/* line 118 */
+.page {
+  transition: all ease-in-out 0.2s;
+}
+
+/* line 121 */
+.page:hover {
+  border-radius: 5px;
+  background: -webkit-linear-gradient(#d62976, #4f5bd5);
+  color: white;
+}
+
+/* line 126 */
+#header-text {
+  background: -webkit-linear-gradient(#feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  background-size: 1800% 1800%;
+  -webkit-animation: rainbow 18s ease infinite;
+  -z-animation: rainbow 18s ease infinite;
+  -o-animation: rainbow 18s ease infinite;
+  animation: rainbow 18s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* line 136 */
+#about-paragraph {
+  font-family: 'Montserrat';
+}
+
+/* line 137 */
+.normal-text {
+  font-family: 'Montserrat' !important;
+}
+
+/* line 140 */
+#about-header {
+  font-size: 36pt !important;
+}
+
+/* line 142 */
+h1 {
+  font-family: "Gilroy Bold";
+}

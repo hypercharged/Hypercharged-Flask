@@ -13,6 +13,8 @@ import flask_sitemap
 from flask_mail import Message, Mail
 import flask_socketio
 import wtforms
+from flask_assets import Environment, Bundle
+
 
 
 app = flask.Flask(__name__)
@@ -23,7 +25,10 @@ app.config['MAIL_PASSWORD'] = os.environ.get("MAIL_PASSWORD")
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
-
+assets = Environment(app)
+scss = Bundle('scss/index.scss',
+            filters='scss', output='gen/all.css')
+assets.register('scss', scss)
 #   Class declaration for Heroku since it's lazy AF
 
 

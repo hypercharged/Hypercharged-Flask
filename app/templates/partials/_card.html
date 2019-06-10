@@ -1,6 +1,6 @@
 {% macro card(metadata, image, mobile) %}
     {% if mobile %}
-    <tr>
+    <tr class="image-row">
         <td>
             <a href="{{ url_for('events', event_name = metadata[image]["event"])}}"><img src="{{ url_for('static', filename='assets/' + image) }}" class="full-width" alt="Loading..."/></a>
         </td>

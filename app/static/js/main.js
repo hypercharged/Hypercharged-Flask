@@ -35,18 +35,22 @@ function toggleMode() {
         $('body').addClass("black");
         $(".black-text").addClass("white-text");
         $(".black-text").removeClass("black-text");
-        $("#logo").attr("src","/static/assets/hctransparentdark.png");
+        $(".logo").attr("src","/static/assets/hctransparentdark.png");
         $(".lever").removeClass("blue");
         $(".lever").addClass("red");
+        $("#nav").removeClass("white");
+        $("#nav").addClass("black");
     }
     else {
         $('body').addClass("white");
         $('body').removeClass("black");
         $(".white-text").addClass("black-text");
         $(".white-text").removeClass("white-text");
-        $("#logo").attr("src","/static/assets/hctransparent.png")
+        $(".logo").attr("src","/static/assets/hctransparent.png")
         $(".lever").addClass("blue");
         $(".lever").removeClass("red");
+        $("#nav").removeClass("black");
+        $("#nav").addClass("white");
 
     }
 

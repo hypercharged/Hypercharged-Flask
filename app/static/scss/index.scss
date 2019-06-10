@@ -1,0 +1,144 @@
+@font-face {
+	src: url("../gen/Gilroy-ExtraBold.otf");
+	font-family: "Gilroy Bold";
+}
+.content-container {
+	border-radius: 20px;
+	margin: 50px auto !important;
+}
+/*
+	For the following rainbow animation, props to https://codepen.io/nohoid/pen/kIfto
+ */
+@-webkit-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@-moz-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@-o-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+.full-width {
+	width: 100%;
+	//	border-radius: 10px;
+	object-fit: cover;
+	height: 300px !important;
+	transition: ease all 0.2s;
+}
+.switch label input[type=checkbox]:checked+.lever:after {
+	background: white;
+}
+#sign-in {
+	margin: 10px !important;
+}
+#sign-in-button {
+	border-radius: 6px 0;
+	width: max-content !important;
+}
+tr {
+	border-bottom: none;
+}
+.image-row {
+	img {
+		box-shadow: 5px 5px 20px black;
+	}
+}
+.forced-center {
+	margin: 0 auto !important;
+	display: block;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#about-image {
+	width: 50%;
+}
+.modal {
+	max-height: 100% !important;
+	border: 5px solid white;
+	transform: translateY(-10%) !important;
+}
+* {
+	font-family: "Gilroy Bold", "Major Mono Display";
+}
+.modal-footer {
+	text-align: left !important;
+}
+.modal-content {
+	padding-bottom: 0px !important;
+}
+.big-icon {
+	font-size: 25px;
+	margin-right: 20px;
+}
+.big-round {
+	border-radius: 20px;
+}
+.modal-image {
+	width: 80%;
+	margin-left: 10%;
+}
+.image-container {
+	margin: 0 auto;
+	width: 80%;
+}
+.full-width:hover {
+	opacity: 0.8;
+}
+@media screen and (max-width : 650px) {
+	#about-image {
+		width: 100% !important;
+	}
+	#header-text {
+		font-size: 20pt;
+	}
+}
+.list-inline {
+  padding-left: 0;
+  list-style: none;
+}
+.list-inline > li {
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+.page {
+	transition: all ease-in-out 0.2s;
+}
+.page:hover {
+	border-radius: 5px;
+	background: -webkit-linear-gradient(#d62976, #4f5bd5);
+	color: white;
+}
+#header-text {
+	background: -webkit-linear-gradient(#feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+	background-size: 1800% 1800%;
+	-webkit-animation: rainbow 18s ease infinite;
+	-z-animation: rainbow 18s ease infinite;
+	-o-animation: rainbow 18s ease infinite;
+	animation: rainbow 18s ease infinite;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+#about-paragraph {font-family: 'Montserrat';}
+.normal-text {
+	font-family: 'Montserrat' !important;
+}
+#about-header {font-size: 36pt !important;}
+
+h1 {
+	font-family: "Gilroy Bold";
+}

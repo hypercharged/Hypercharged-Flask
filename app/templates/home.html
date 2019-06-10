@@ -11,6 +11,7 @@
     {% endif %}
 <table class="image-container hide-on-small-only">
     {% for image in images %}
+        <h1></h1>
         {% if image not in ("hctransparent.png","hctransparentdark.png","favicon", "fonts")  %} {# If not excluded #}
             {% if loop.index == 1 %}
             <tr> {# Start Table #}
