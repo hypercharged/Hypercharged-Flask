@@ -2,15 +2,6 @@
   src: url("../gen/Gilroy-ExtraBold.otf");
   font-family: "Gilroy Bold";
 }
-/* line 5 */
-.content-container {
-  border-radius: 20px;
-  margin: 50px auto !important;
-}
-
-/*
-	For the following rainbow animation, props to https://codepen.io/nohoid/pen/kIfto
- */
 @-webkit-keyframes rainbow {
   0% {
     background-position: 0% 82%;
@@ -55,7 +46,27 @@
     background-position: 0% 82%;
   }
 }
-/* line 32 */
+/* line 3 */
+::-webkit-scrollbar {
+  background: transparent;
+  -webkit-box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 1px 1px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* line 9 */
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: linear-gradient(#feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+}
+
+/* line 13 */
+.content-container {
+  border-radius: 20px;
+  margin: 50px auto !important;
+}
+
+/* line 17 */
 .full-width {
   width: 100%;
   object-fit: cover;
@@ -63,137 +74,137 @@
   transition: ease all 0.2s;
 }
 
-/* line 39 */
+/* line 24 */
 .switch label input[type=checkbox]:checked + .lever:after {
   background: white;
 }
 
-/* line 42 */
+/* line 27 */
 #sign-in {
   margin: 10px !important;
 }
 
-/* line 45 */
+/* line 30 */
 #sign-in-button {
   border-radius: 6px 0;
   width: max-content !important;
 }
 
-/* line 49 */
+/* line 34 */
 tr {
   border-bottom: none;
 }
 
-/* line 53 */
+/* line 38 */
 .image-row img {
   box-shadow: 5px 5px 20px black;
 }
 
-/* line 57 */
+/* line 42 */
 .forced-center {
   margin: 0 auto !important;
   display: block;
 }
 
-/* line 61 */
+/* line 46 */
 .center {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 66 */
+/* line 51 */
 #about-image {
   width: 50%;
 }
 
-/* line 69 */
+/* line 54 */
 .modal {
   max-height: 100% !important;
   border: 5px solid white;
   transform: translateY(-10%) !important;
 }
 
-/* line 74 */
+/* line 59 */
 * {
   font-family: "Gilroy Bold", "Major Mono Display";
 }
 
-/* line 77 */
+/* line 62 */
 .modal-footer {
   text-align: left !important;
 }
 
-/* line 80 */
+/* line 65 */
 .modal-content {
   padding-bottom: 0px !important;
 }
 
-/* line 83 */
+/* line 68 */
 .big-icon {
   font-size: 25px;
   margin-right: 20px;
 }
 
-/* line 87 */
+/* line 72 */
 .big-round {
   border-radius: 20px;
 }
 
-/* line 90 */
+/* line 75 */
 .modal-image {
   width: 80%;
   margin-left: 10%;
 }
 
-/* line 94 */
+/* line 79 */
 .image-container {
   margin: 0 auto;
   width: 80%;
 }
 
-/* line 98 */
+/* line 83 */
 .full-width:hover {
   opacity: 0.8;
 }
 
 @media screen and (max-width: 650px) {
-  /* line 102 */
+  /* line 87 */
   #about-image {
     width: 100% !important;
   }
 
-  /* line 105 */
+  /* line 90 */
   #header-text {
     font-size: 20pt;
   }
 }
-/* line 109 */
+/* line 94 */
 .list-inline {
   padding-left: 0;
   list-style: none;
 }
 
-/* line 113 */
+/* line 98 */
 .list-inline > li {
   display: inline-block;
   padding-right: 5px;
   padding-left: 5px;
 }
 
-/* line 118 */
+/* line 103 */
 .page {
   transition: all ease-in-out 0.2s;
 }
 
-/* line 121 */
+/* line 106 */
 .page:hover {
   border-radius: 5px;
   background: -webkit-linear-gradient(#d62976, #4f5bd5);
-  color: white;
+  color: white !important;
 }
 
-/* line 126 */
+/* line 111 */
 #header-text {
   background: -webkit-linear-gradient(#feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
   background-size: 1800% 1800%;
@@ -205,22 +216,22 @@ tr {
   -webkit-text-fill-color: transparent;
 }
 
-/* line 136 */
-#about-paragraph {
-  font-family: 'Montserrat';
+/* line 121 */
+h3 {
+  transition: all ease-in-out 0.2s;
 }
 
-/* line 137 */
-.normal-text {
-  font-family: 'Montserrat' !important;
+/* line 124 */
+h3:hover {
+  text-shadow: 2px 2px 3px rgba(81, 81, 81, 0.72);
 }
 
-/* line 140 */
+/* line 127 */
 #about-header {
   font-size: 36pt !important;
 }
 
-/* line 142 */
+/* line 129 */
 h1 {
   font-family: "Gilroy Bold";
 }

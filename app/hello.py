@@ -15,10 +15,8 @@ import flask_socketio
 import wtforms
 from flask_assets import Environment, Bundle
 
-
-
 app = flask.Flask(__name__)
-app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'hyperchargedvideos@gmail.com'
 app.config['MAIL_PASSWORD'] = os.environ.get("MAIL_PASSWORD")
@@ -27,8 +25,10 @@ app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
 assets = Environment(app)
 scss = Bundle('scss/index.scss',
-            filters='scss', output='gen/all.css')
+              filters='scss', output='gen/all.css')
 assets.register('scss', scss)
+
+
 #   Class declaration for Heroku since it's lazy AF
 
 
@@ -96,11 +96,6 @@ settings = {
 secret, publish = "", ""
 socketio = flask_socketio.SocketIO(app)
 
-"""
-
-KEY FOR DEVS: DO NOT, UNDER ANY CIRCUMSTANCE, LEAK SECRET OR PUBLISHABLE KEYS --> Stored in keypair.hypercharged file
-
-"""
 try:
     pick = pickle.load(open(PICKLE_FILE, 'rb'))
     publish = pick["PUBLISHABLE_KEY"]
@@ -152,14 +147,14 @@ def retrieve_json():
 
 # noinspection PyTypeChecker
 def get_cars(event_name):
-     file = dict(retrieve_json())
-     events = {}
-     images_events = []
-     for key, value in file.items():
-         if value["event"] == event_name:
-             events[key] = value
-             images_events.append(key)
-     return [events, images_events]
+    file = dict(retrieve_json())
+    events = {}
+    images_events = []
+    for key, value in file.items():
+        if value["event"] == event_name:
+            events[key] = value
+            images_events.append(key)
+    return [events, images_events]
 
 
 def add_images(ls):
@@ -241,7 +236,9 @@ def register():
 def events(event_name):
     event_name = event_name.replace("%20", " ")  # URL's convert spaces to %20, so this reverses that
     event_filter = get_cars(event_name)  # Finds all json items with event_name == event_name in URL
-    return render_template("home.html", event_name=event_name, metadata=event_filter[0], year=datetime.datetime.now().year, images=event_filter[1], name=event_name.upper(), description=settings["Home"]["description"])
+    return render_template("home.html", event_name=event_name, metadata=event_filter[0],
+                           year=datetime.datetime.now().year, images=event_filter[1], name=event_name.upper(),
+                           description=settings["Home"]["description"])
 
 
 @app.route('/')
@@ -259,7 +256,7 @@ def home():
     except Exception as e4:
         print(e4)
     return render_template('home.html', name="Home", description=settings["Home"]["description"], images=images,
-                                 metadata=metadata, year=datetime.datetime.now().year)
+                           metadata=metadata, year=datetime.datetime.now().year)
 
 
 @app.route('/about')

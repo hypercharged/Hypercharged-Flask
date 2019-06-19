@@ -1,33 +1,18 @@
-@font-face {
-	src: url("../gen/Gilroy-ExtraBold.otf");
-	font-family: "Gilroy Bold";
+@import "./_variables.scss";
+
+::-webkit-scrollbar {
+	background: transparent;
+	-webkit-box-shadow: inset 1px 1px 2px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: inset 1px 1px 2px 0px rgba(0,0,0,0.2);
+	box-shadow: inset 1px 1px 2px 0px rgba(0,0,0,0.2);
+}
+::-webkit-scrollbar-thumb {
+	border-radius: 5px;
+	background: linear-gradient(#feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
 }
 .content-container {
 	border-radius: 20px;
 	margin: 50px auto !important;
-}
-/*
-	For the following rainbow animation, props to https://codepen.io/nohoid/pen/kIfto
- */
-@-webkit-keyframes rainbow {
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
-}
-@-moz-keyframes rainbow {
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
-}
-@-o-keyframes rainbow {
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
-}
-@keyframes rainbow {
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
 }
 .full-width {
 	width: 100%;
@@ -72,7 +57,7 @@ tr {
 	transform: translateY(-10%) !important;
 }
 * {
-	font-family: "Gilroy Bold", "Major Mono Display";
+	font-family: $bold-text, "Major Mono Display";
 }
 .modal-footer {
 	text-align: left !important;
@@ -121,7 +106,7 @@ tr {
 .page:hover {
 	border-radius: 5px;
 	background: -webkit-linear-gradient(#d62976, #4f5bd5);
-	color: white;
+	color: white !important;
 }
 #header-text {
 	background: -webkit-linear-gradient(#feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
@@ -133,12 +118,14 @@ tr {
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
-#about-paragraph {font-family: 'Montserrat';}
-.normal-text {
-	font-family: 'Montserrat' !important;
+h3 {
+	transition: all ease-in-out 0.2s;
+}
+h3:hover {
+	text-shadow: 2px 2px 3px rgba(81, 81, 81, 0.72);
 }
 #about-header {font-size: 36pt !important;}
 
 h1 {
-	font-family: "Gilroy Bold";
+	font-family: $bold-text;
 }

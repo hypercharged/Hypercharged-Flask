@@ -83,6 +83,7 @@
             <li class="page"><a class="black-text" href="{{ url_for('home') }}">Home</a></li>
             <li class="page"><a class="black-text" href="{{ url_for('about') }}">About</a></li>
             <li class="page"><a class="black-text" href="{{ url_for('home') }}">Contact</a></li>
+            {#
             <li>
                 <div class="switch forced-center" id="dark-mode-toggle">
                     <label>
@@ -92,6 +93,7 @@
                     </label>
                 </div>
             </li>
+             #}
         </ul>
         </div>
         <div class="hide-on-med-and-up">
@@ -107,16 +109,15 @@
             <li class="page"><a style="color: white;" href="{{ url_for('home') }}">Home</a></li>
             <li class="page"><a style="color: white;" href="{{ url_for('about') }}">About</a></li>
             <li class="page"><a style="color: white;" href="{{ url_for('home') }}">Contact</a></li>
-            <li class="page">
+            {#<li class="page">
                 <a class="black-text">Dark Mode</a>
                 <div class="switch forced-center" id="dark-mode-toggle">
                     <label>
                         <input type="checkbox">
                         <span class="lever blue"></span>
                     </label>
-
                 </div>
-            </li>
+            </li>#}
           </ul>
         </div>
         {% block content %} {% endblock %}
